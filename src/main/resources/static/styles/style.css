@@ -27,7 +27,7 @@
 }
 
 .barra-superior-texto {
-    font-size: 1.5rem;
+    font-size: 4rem;
     font-weight: 800;
     background: var(--accent-dark);
     -webkit-background-clip: text;
@@ -41,11 +41,12 @@
 }
 
 .barra-superior-imagen img{
-    width: 30px;
+    width: 100px;
     border-radius: 50%;
 }
 
 .barra-inferior{
+    max-height: 9rem;
     background-color: var(--secondary-dark);
     display:flex;
     position: fixed;
@@ -74,11 +75,12 @@
 }
 
 .barra-inferior nav img {
-    width: 60px;
+    width: 100px;
     object-fit: contain;
 }
 
-.barra-inferior nav span{
+.barra-inferior nav a{
+    font-size: 2rem;
     text-decoration:none;
     color:#FFFFFF;
 }
@@ -87,7 +89,7 @@
 lo demas es para que no salga un espacio en blanco entre el contenido y la barra inferior*/
 body{
     margin: 0;
-    padding-bottom: 83px;
+    padding-bottom: 143px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
