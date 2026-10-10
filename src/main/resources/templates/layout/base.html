@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Gamerhub</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+</head>
+<body>
+<!--    barra superior reutilizable-->
+<div class="barra-superior">
+    <a th:href="@{/prueba}" class="barra-superior-texto">← Gamerhub</a>
+    <div class="barra-superior-imagen">
+        <img th:src="@{/imgs/pfp.png}" alt="pfp">
+    </div>
+</div>
+<!--    parte reemplazabale para cada pagina que implemente esta base-->
+<main class="container" th:replace="${content}">
+
+</main>
+
+<!--barra de abajo reutilizable-->
+<footer class="barra-inferior">
+    <nav>
+        <a th:href="@{/prueba}"><img th:src="@{/imgs/catalogo.png}" alt="pfp"><span>Catálogo</span></a>
+        <a th:href="@{/prueba}"><img th:src="@{/imgs/carrito.png}" alt="pfp"><span>Carrito</span></a>
+        <a th:href="@{/prueba}"><img th:src="@{/imgs/ordenes.png}" alt="pfp"><span>Órdenes</span></a>
+        <a th:href="@{/prueba}"><img th:src="@{/imgs/cuenta.png}" alt="pfp"><span>Cuenta</span></a>
+    </nav>
+</footer>
+</body>
+</html>
