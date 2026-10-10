@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesion - GamerHub</title>
 </head>
 <body>
-
+<main class="autenticacion-container">
+    <section class="autenticacion-card">
+        <div class="autenticacion-card-header">
+    <a href="catalogo.html">Volver al catalogo</a>
+    <h1>¡Bienvenido de vuelta, <span class="gamer">Gamer</span>!</h1>
+    <h2>Ingresa a tu cuenta para gestionar tus reservas físicas, órdenes y catálogo.</h2>
+        </div>
+        <div class="autenticacion-card-body">
+            <form method="post" action="/autenticacion" enctype="application/x-www-form-urlencoded">
+                <div class="credenciales">
+                    <label for="correo">Correo Electronico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="correo@gmail.com" required minlength="5" maxlength="100" >
+                </div>
+                <div class="credenciales">
+                    <label for="contrasenia">Contraseña</label>
+                    <input type="password" id="contrasenia" name="contrasenia" placeholder="******" required minlength="8">
+                </div>
+                <div class="credenciales">
+                    <button type="submit" class="btn-primary">Iniciar Sesion</button>
+                </div>
+            </form>
+        </div>
+        <p>
+            ¿Aún no tienes una cuenta GamerHub? <a href="registro.html"><span class="registroTexto">Registrate gratis</span></a>
+        </p>
+    </section>
+</main>
 </body>
 </html>
