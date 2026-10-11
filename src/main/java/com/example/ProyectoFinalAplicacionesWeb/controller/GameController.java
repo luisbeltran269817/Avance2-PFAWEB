@@ -12,8 +12,13 @@ public class GameController {
         return "prueba";
     }
 
-    @GetMapping({"/"})
+    @GetMapping({"/","inicioSesion"})
     public String inicioSesion(){
         return "inicioSesion";
+    }
+
+    @GetMapping({"/registro"})
+    public String registro(){
+        return "registro";
     }
 }

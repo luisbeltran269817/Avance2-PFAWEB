@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+
 :root {
     --primary-dark: #0f172a;
     --secondary-dark: #1e293b;
+    --tertiary-dark: #060E20;
     --accent-dark: #06b6d4;
+    --texto-h1:Space Grotesk;
 }
 
 * {
@@ -10,7 +15,6 @@
     box-sizing: border-box;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
-
 
 
 .barra-superior{
@@ -177,9 +181,11 @@ h1, h2, h3 {
     font-size: 2.5rem;
 }
 
-/*estilos para los campos de input de email y password*/
+/*estilos para los campos de input de email,password,nombre y contraseña*/
 input[type="email"],
-input[type="password"]
+input[type="password"],
+input[type="text"],
+input[type="tel"]
 {
     color: #FFFFFF;
     width: 100%;
@@ -192,4 +198,97 @@ input[type="password"]
     font-size: 2.5rem;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*estilos registro*/
+.registro-container{
+    height: 100vh;
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+    padding: 20px;
+
+    p{
+        margin-top: 2rem;
+        text-align:center;
+        font-size: 2.5rem;
+    }
+
+    a{
+        text-decoration:none;
+        color: var(--accent-dark);
+    }
+}
+
+.registro-card-header{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    gap: 20px;
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    h2{
+        font-size: 2.5rem;
+        font-weight: normal;
+        color: darkgray;
+    }
+}
+
+.registro-card-body{
+    display:flex;
+    flex-direction:column;
+    background-color: var(--tertiary-dark);
+    border: 2px solid var(--tertiary-dark);
+    border-radius: 15px;
+    padding: 20px;
+
+    h1{
+        font-size: 35px;
+    }
+}
+
+.credenciales{
+    margin-top: 40px;
+}
+
+.registro-card p{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminosRegistro{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    gap: 5px;
+    margin-top: 20px;
+    background-color: var(--tertiary-dark);
+    border: 2px solid var(--tertiary-dark);
+    border-radius: 15px;
+}
+
+.terminosRegistro input[type="checkbox"]{
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-dark);
+    gap: 50px;
+    border-radius: 5px;
+}
+.terminosRegistro span{
+    color: var(--accent-dark);
+    text-decoration-color: var(--accent-dark);
+    text-decoration: underline;
+    font-size: 25px;
+}
+
+.terminosRegistro label{
+    font-size: 25px;
 }

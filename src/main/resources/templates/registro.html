@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Regitro - GamerHub</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
 </head>
 <body>
-
+<main class="registro-container">
+<section class="registro-card">
+    <div class="registro-card-header">
+        <h1>Crea tu cuenta gamer</h1>
+        <h2>Únete a GamerHub y recibe tus ediciones físicas y steelbooks en tu puerta.</h2>
+    </div>
+    <div class="registro-card-body">
+        <h1>Datos de acceso</h1>
+        <form method="post" action="/registro" enctype="application/x-www-form-urlencoded">
+            <div class="credenciales">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="pedro luis" required minlength="5" maxlength="100" >
+            </div>
+            <div class="credenciales">
+                <label for="correo">Correo Electronico:</label>
+                <input type="email" id="correo" name="correo" placeholder="correo@gmail.com" required minlength="5" maxlength="100" >
+            </div>
+            <div class="credenciales">
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" id="contrasenia" name="contrasenia" placeholder="******" required minlength="8">
+            </div>
+            <div class="credenciales">
+                <label for="telefono">Numero de telefono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="6444097865" required minlength="8">
+            </div>
+            <div class="credenciales">
+                <button type="submit" class="btn-primary">Crear Cuenta Y Comenzar</button>
+            </div>
+    </div>
+        <div class="terminosRegistro">
+            <input type="checkbox" id="terminos" name="terminos" required
+                   oninvalid="this.setCustomValidity('Debes aceptar los términos antes de continuar')"
+                   onchange="setCustomValidity('')">
+            <label for="terminos">Acepto los <span>Términos y Condiciones</span> y la <span>Política de Privacidad</span> de GamerHub.</label>
+        </div>
+    </form>
+    <p>
+        ¿Ya tienes cuenta?<br><a href="inicioSesion"><span class="inicioSesionTexto">Iniciar Sesión</span></a>
+    </p>
+</section>
+</main>
 </body>
 </html>
