@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class GameController {
 
-    @GetMapping({"/" , "/prueba"})
+    @GetMapping({"/prueba"})
     public String prueba(){
         return "prueba";
+    }
+
+    @GetMapping({"/"})
+    public String inicioSesion(){
+        return "inicioSesion";
     }
 }

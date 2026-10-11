@@ -85,14 +85,17 @@
     color:#FFFFFF;
 }
 
-/*el padding es para que se vea el contenido hasta abajo y no lo tape la barra inferior
-lo demas es para que no salga un espacio en blanco entre el contenido y la barra inferior*/
+
 body{
     margin: 0;
-    padding-bottom: 143px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+/*ajustes para las paginas con barras (por la inferior, para no tapar contenido)*/
+body.conBarras{
+    padding-bottom: 143px;
 }
 
 .container {
@@ -105,4 +108,88 @@ body{
 
 h1, h2, h3 {
     margin-bottom: 1rem;
+}
+
+/*boton primario*/
+.btn-primary{
+    background-color: var(--accent-dark);
+    color: black;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2.5rem;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-primary:hover{
+    background-color: #FFFFFF;
+    color: black;
+}
+
+/*estilos inicioSesion*/
+.autenticacion-container{
+    height: 100vh;
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+    padding: 20px;
+
+    p{
+        margin-top: 2rem;
+        text-align:center;
+        font-size: 2.5rem;
+    }
+
+    a{
+        text-decoration:none;
+        color: var(--accent-dark);
+    }
+}
+
+
+.autenticacion-card-header{
+    margin-top: 50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align: center;
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    h2{
+        font-size: 2.5rem;
+        font-weight: normal;
+        color: darkgray;
+    }
+}
+
+.autenticacion-card-body{
+    display:flex;
+    flex-direction:column;
+}
+
+.credenciales label{
+    font-size: 2.5rem;
+}
+
+/*estilos para los campos de input de email y password*/
+input[type="email"],
+input[type="password"]
+{
+    color: #FFFFFF;
+    width: 100%;
+    padding: 12px;
+    margin-bottom:12px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background-color: var(--secondary-dark);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
