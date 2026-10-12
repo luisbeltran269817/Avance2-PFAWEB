@@ -1,6 +1,26 @@
 <th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main})}" xmlns:th="http://www.thymeleaf.org">
     <title>Perfil - GamerHub</title>
     <main class="container perfil">
-        <p>Kevin :p</p>
+
+        <section class="perfil-usuario">
+            <img th:src="@{/imgs/pfp.png}" alt="Foto de perfil">
+            <div>
+                <h1> Kevin Mendoza</h1> <p>kevin@mail.com</p>
+            </div>
+        </section>
+
+        <section class="perfil-apariencia">
+            <h2>Apariencia</h2>
+            <p> Selecciona el tema visual de GamerHub</p>
+
+            <div class="perfil-opcion">
+            <label for="modoNoche">
+                <strong> Modo Noche Automático </strong>
+                <small>Activar contraste suave al anochecer </small>
+            </label>
+            <input type="checkbox" id="modoNoche" class="toggle" checked>
+        </div>
+    </section>
+
     </main>
 </th:block>
