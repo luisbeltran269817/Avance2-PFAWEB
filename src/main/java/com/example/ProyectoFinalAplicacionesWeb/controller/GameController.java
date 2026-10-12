@@ -21,4 +21,9 @@ public class GameController {
     public String registro(){
         return "registro";
     }
+
+    @GetMapping({"/perfil"})
+    public String perfil(){
+        return "perfil";
+    }
 }
