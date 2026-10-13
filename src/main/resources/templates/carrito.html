@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Carrito</title>
+    <main class="container" style="background-color: var(--primary-dark); color:#ffffff;">
+        <h2 style="font-size:4rem; margin-bottom:20px; margin-top: 20px;">Articulos en carrito</h2>
 
-</body>
-</html>
+<!--        este div representa un producto en el carrito-->
+        <div class="producto-card-grid">
+            <div class="producto-card-imagen"><img src="/imgs/haloinfinite.jpeg" alt = "producto"></div>
+            <div class="producto-card-nombre">Halo Infinite: Steelbook Edition</div>
+            <div class="producto-card-soporteFisico">Disco, caja metalica coleccionable</div>
+            <div class="producto-card-precioUnitario">Unitario $44.99</div>
+            <div class="producto-card-precioTotal">$89.98</div>
+            <div class="contador-productos-carrito">
+                <button>-</button>
+                <div class="contador-cantidad">2</div>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="producto-card-grid">
+            <div class="producto-card-imagen"><img src="/imgs/zeldatotk.jpg" alt = "producto"></div>
+            <div class="producto-card-nombre">Zelda: Tears of The Kingdom</div>
+            <div class="producto-card-soporteFisico">Cartucho, caja regular</div>
+            <div class="producto-card-precioUnitario">Unitario $54.99</div>
+            <div class="producto-card-precioTotal">$54.99</div>
+            <div class="contador-productos-carrito">
+                <button>-</button>
+                <div class="contador-cantidad">1</div>
+                <button>+</button>
+            </div>
+        </div>
+
+        <div class="producto-card-grid">
+            <div class="producto-card-imagen"><img src="/imgs/worldzero.jpg" alt = "producto"></div>
+            <div class="producto-card-nombre">World // Zero</div>
+            <div class="producto-card-soporteFisico">Disco, caja regular</div>
+            <div class="producto-card-precioUnitario">Unitario $29.99</div>
+            <div class="producto-card-precioTotal">$29.99</div>
+            <div class="contador-productos-carrito">
+                <button>-</button>
+                <div class="contador-cantidad">1</div>
+                <button>+</button>
+            </div>
+        </div>
+
+<!--        y esta ultima card es para el resumen de compra-->
+        <div class="resumenCompra-card">
+            <h2 style="font-size: 2.5rem">Resumen de compra</h2>
+            <p class="texto-izq">
+                Subtotal (3 articulos):<br>
+                Envio express DHL:<br>
+                Impuestos IVA:
+            </p>
+            <p class="texto-der">
+                $174.96<br>
+                $0.00 (Gratis)<br>
+                $0.00 (Incluidos)
+            </p>
+            <h2 class="resumenCompra-card-total">Total a pagar: $174.96</h2>
+        </div>
+
+
+
+    </main>
+</th:block>

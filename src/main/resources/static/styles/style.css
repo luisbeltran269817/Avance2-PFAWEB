@@ -292,3 +292,130 @@ input[type="tel"]
 .terminosRegistro label{
     font-size: 25px;
 }
+
+/*estilos para carrito*/
+.producto-card-grid{
+    height: 28rem;
+    margin-bottom: 35px;
+    background-color: var(--secondary-dark);
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+
+    .producto-card-imagen{
+        display: flex;
+        grid-column: 1/3;
+        grid-row: 1/-1;
+        overflow:hidden;
+
+        img{
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .producto-card-nombre{
+        grid-column: 3/-1;
+        grid-row: 1/2;
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+
+    .producto-card-soporteFisico{
+        grid-column: 3/-1;
+        grid-row:2/3;
+        font-size:2rem;
+    }
+
+    .producto-card-precioUnitario{
+        grid-column: 3/5;
+        grid-row:3/4;
+        font-weight: bold;
+        font-size:2rem;
+    }
+
+    .producto-card-precioTotal{
+        grid-column: 3/5;
+        grid-row:4/5;
+        font-weight: bold;
+        color: var(--accent-dark);
+        font-size:2rem;
+    }
+
+    .contador-productos-carrito{
+        grid-column: 5/7;
+        grid-row: 3/-1;
+
+        margin-top: 40px;
+        padding: 10px;
+        border-radius:10px;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        width: 250px;
+
+        background-color: var(--primary-dark);
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        button{
+            border: 1px solid;
+            border-radius: 10px;
+            background-color: var(--secondary-dark);
+            font-weight: bold;
+            font-size: 2.5rem;
+            color:#FFFFFF;
+        }
+
+        .contador-cantidad{
+            font-weight: bold;
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+}
+
+.resumenCompra-card{
+    gap:15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 20px;
+    height: 28rem;
+    margin-bottom: 35px;
+    background-color: var(--secondary-dark);
+    border-radius: 15px;
+
+    .texto-izq{
+        grid-column: 1/2;
+        grid-row: 2/3;
+        font-size: 2rem;
+    }
+
+    .texto-der{
+        grid-column: 2/3;
+        grid-row: 2/3;
+        font-size: 2rem;
+        text-align: right;
+    }
+
+    .resumenCompra-card-total{
+        color: var(--accent-dark);
+        font-size: 3rem;
+        display: flex;
+        grid-column: 1/-1;
+        grid-row: 3/-1;
+        border-top: 1px solid var(--accent-dark);
+        align-items: center;
+        justify-content: center;
+    }
+
+
+}
+
