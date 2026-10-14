@@ -1,29 +1,52 @@
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main})}"
-          xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
     <title>Perfil - GamerHub</title>
-    <main class="container perfil">
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="conBarras">
 
-        <section class="tarjeta perfil-usuario">
-            <img th:src="@{/imgs/pfp.png}" alt="Foto de perfil">
-            <div>
-                <h1>Kevin Mendoza</h1>
-                <p>kevin@mail.com</p>
-            </div>
-        </section>
+<div class="barra-superior">
+    <a href="/prueba" class="barra-superior-texto">← Gamerhub</a>
+    <div class="barra-superior-imagen">
+        <img src="/imgs/pfp.png" alt="Foto de perfil">
+    </div>
+</div>
 
-        <section class="tarjeta perfil-apariencia">
-            <h2>Apariencia</h2>
-            <p>Selecciona el tema visual de GamerHub</p>
+<main class="container perfil">
 
-            <div class="perfil-opcion">
-                <label for="modoNoche">
-                    <strong>Modo Noche Automático</strong>
-                    <small>Activar contraste suave al anochecer</small>
-                </label>
-                <input type="checkbox" id="modoNoche" class="toggle" checked>
-            </div>
-        </section>
+    <section class="tarjeta perfil-usuario">
+        <img src="/imgs/pfp.png" alt="Foto de perfil">
+        <div>
+            <h1>Alex Vance</h1>
+            <p>alex.vance@gamerhub.io</p>
+        </div>
+    </section>
 
-    </main>
+    <section class="tarjeta perfil-apariencia">
+        <h2>Apariencia</h2>
+        <p>Selecciona el tema visual de GamerHub</p>
 
-</th:block>
+        <div class="perfil-opcion">
+            <label for="modoNoche">
+                <strong>Modo Noche Automático</strong>
+                <small>Activar contraste suave al anochecer</small>
+            </label>
+            <input type="checkbox" id="modoNoche" class="toggle" checked>
+        </div>
+    </section>
+
+</main>
+
+<footer class="barra-inferior">
+    <nav>
+        <a href="/prueba"><img src="/imgs/catalogo.png" alt="">Catálogo</a>
+        <a href="/prueba"><img src="/imgs/carrito.png" alt="">Carrito</a>
+        <a href="/prueba"><img src="/imgs/ordenes.png" alt="">Órdenes</a>
+        <a href="/perfil"><img src="/imgs/cuenta.png" alt="">Cuenta</a>
+    </nav>
+</footer>
+
+</body>
+</html>
