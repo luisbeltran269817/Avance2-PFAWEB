@@ -22,6 +22,9 @@ public class GameController {
         return "registro";
     }
 
+    @GetMapping({"/perfil"})
+    public String perfil(){
+        return "perfil";
     @GetMapping({"/carrito"})
     public String carrito(){
         return "carrito";
