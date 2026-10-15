@@ -654,11 +654,9 @@ body.admin {
     flex-direction: row;
     gap: 15px;
 
-    h2 {
-        font-size: 4rem;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
+    font-size: 4rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
 
     img{
         width: 5.5rem;
