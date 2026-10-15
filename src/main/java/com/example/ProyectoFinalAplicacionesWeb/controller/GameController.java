@@ -31,4 +31,9 @@ public class GameController {
     public String carrito(){
         return "carrito";
     }
+
+    @GetMapping({"/ordenes"})
+    public String ordenes(){
+        return "ordenes";
+    }
 }
