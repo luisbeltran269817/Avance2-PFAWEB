@@ -127,6 +127,7 @@ h1, h2, h3 {
     font-size: 2.5rem;
     transition: all 0.3s ease;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .btn-primary:hover{
