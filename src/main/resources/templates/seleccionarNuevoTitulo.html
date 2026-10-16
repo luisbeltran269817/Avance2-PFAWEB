@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Seleccionar opción - Admin GamerHub</title>
+    <main class="admin-container">
 
-</body>
-</html>
+        <section class="admin-opciones">
+            <h1>Seleccione una opción</h1>
+            <nav>
+                <a th:href="@{/admin/productos/nuevo}" class="btn-secundario">Añadir Nuevo Producto</a>
+                <a th:href="@{/admin/variantes/seleccionar}" class="btn-secundario">Añadir Variante a Producto</a>
+            </nav>
+        </section>
+
+        <div class="barra-acciones">
+            <a th:href="@{/admin}" class="btn-secundario">Cancelar / Volver</a>
+        </div>
+
+    </main>
+</th:block>

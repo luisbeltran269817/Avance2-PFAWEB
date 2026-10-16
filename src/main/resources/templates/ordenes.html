@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Ordenes</title>
+    <main class="container">
 
-</body>
-</html>
+
+        <h2 class="cabecera-ordenes">
+            <img src="/imgs/camionGH.png" alt ="camion">
+            Mis Ordenes
+        </h2>
+
+        <nav class="filtros-pedidos">
+            <button type="button" class="btn-primary">Todos</button>
+            <button type="button" class="btn-primary">Pendiente</button>
+            <button type="button" class="btn-primary">Procesando</button>
+            <button type="button" class="btn-primary">Enviado</button>
+            <button type="button" class="btn-primary">Entregado</button>
+            <button type="button" class="btn-primary">Cancelado</button>
+        </nav>
+
+        <div class="card-ordenes">
+            <div class="orden-primerinfo">
+                <h2 class="orden-folio">#GH-84920</h2>
+                <p class="orden-estado">Enviado</p>
+                <p class="orden-fecha">31-Octubre-2077</p>
+                <div class="detallesNumGuia">
+                    <img class="img-numGuia" src="/imgs/ordenes.png" alt = "ordenes">
+                    <p class="orden-numeroGuia">Guía DHL Express: 6237-0724-8602</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>Ver detalles</summary>
+                <div class="detalles-ordenes">
+                    <div class="detalleorden-card-imagen"><img src="/imgs/haloinfinite.jpeg" alt = "producto"></div>
+                    <div class="detalleorden-card-nombre">Halo Infinite: Steelbook Edition</div>
+                    <div class="detalleorden-card-plataforma">Xbox</div>
+                    <div class="detalleorden-card-cantidad">Cantidad: 2</div>
+                    <div class="detalleorden-card-precio">$89.98</div>
+                </div>
+                <div class="detalles-ordenes">
+                    <div class="detalleorden-card-imagen"><img src="/imgs/zeldatotk.jpg" alt = "producto"></div>
+                    <div class="detalleorden-card-nombre">Zelda: Tears of The Kingdom</div>
+                    <div class="detalleorden-card-plataforma">Switch</div>
+                    <div class="detalleorden-card-cantidad">Cantidad: 1</div>
+                    <div class="detalleorden-card-precio">$54.99</div>
+                </div>
+            </details>
+        </div>
+
+        <div class="card-ordenes">
+            <div class="orden-primerinfo">
+                <h2 class="orden-folio">#OW-03729</h2>
+                <p class="orden-estado">Procesando</p>
+                <p class="orden-fecha">18-Noviembre-2077</p>
+                <div class="detallesNumGuia">
+                    <img class="img-numGuia" src="/imgs/ordenes.png" alt = "ordenes">
+                    <p class="orden-numeroGuia">Guía DHL Express: 3054-6568-2348</p>
+                </div>
+            </div>
+
+            <details>
+                <summary>Ver detalles</summary>
+                <div class="detalles-ordenes">
+                    <div class="detalleorden-card-imagen"><img src="/imgs/worldzero.jpg" alt = "producto"></div>
+                    <div class="detalleorden-card-nombre">World // Zero</div>
+                    <div class="detalleorden-card-plataforma">PC</div>
+                    <div class="detalleorden-card-cantidad">Cantidad: 1</div>
+                    <div class="detalleorden-card-precio">$29.99</div>
+                </div>
+            </details>
+        </div>
+    </main>
+</th:block>

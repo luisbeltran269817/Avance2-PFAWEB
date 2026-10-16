@@ -1,6 +1,6 @@
 <th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
     <title>Carrito</title>
-    <main class="container" style="background-color: var(--primary-dark); color:#ffffff;">
+    <main class="container">
         <h2 style="font-size:4rem; margin-bottom:20px; margin-top: 20px;">Articulos en carrito</h2>
 
 <!--        este div representa un producto en el carrito-->
@@ -58,6 +58,10 @@
             </p>
             <h2 class="resumenCompra-card-total">Total a pagar: $174.96</h2>
         </div>
+
+<!--        esto usa javascript, pero el profe dijo que la parte de usuario seria con javascript, asi que deberia estar bien-->
+<!--        no lo hice <a> porque queria que se viera como un boton y reutilizar la clase btn-primary-->
+        <button type="button" class="btn-primary" onclick="window.location.href='/prueba'">Continuar a información de envío</button>
 
 
 
