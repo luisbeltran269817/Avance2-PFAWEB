@@ -26,4 +26,19 @@ public class GameController {
     public String carrito(){
         return "carrito";
     }
+
+    @GetMapping({"/finalizarCompra"})
+    public String finalizarCompra(){
+        return "finalizarCompra";
+    }
+
+    @GetMapping({"/agregarDireccion"})
+    public String agregarDireccion(){
+        return "agregarDireccion";
+    }
+
+    @GetMapping({"/pagoConfirmado"})
+    public String pagoConfirmado(){
+        return "pagoConfirmado";
+    }
 }
