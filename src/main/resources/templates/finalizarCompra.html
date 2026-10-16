@@ -1,10 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Finalizar compra</title>
+    <main class="checkout-container">
 
-</body>
-</html>
+        <a href="/carrito" class="btn-volver">
+            <img src="/imgs/flechaVolver.png" alt="">
+            <span>Volver al carrito</span>
+        </a>
+
+        <form method="post" action="/checkout" enctype="application/x-www-form-urlencoded">
+
+            <section class="checkout-card">
+                <h2>Resumen del Pedido</h2>
+
+                <article class="resumen-item">
+                    <img src="/imgs/eldenRingShadow.jpeg" alt="Elden Ring: Shadow of the Erdtree">
+                    <div class="resumen-info">
+                        <h3>Elden Ring: Shadow of the Erdtree</h3>
+                        <p class="resumen-edicion">Collector’s Edition · PS5</p>
+                        <p class="resumen-precio">$149.99 USD</p>
+                    </div>
+                </article>
+
+                <div class="resumen-total">
+                    <div>
+                        <p class="total-label">Total a Pagar</p>
+                        <p class="total-nota">Impuestos y aranceles incluidos</p>
+                    </div>
+                    <p class="total-monto">$149.99 USD</p>
+                </div>
+            </section>
+
+            <section class="checkout-card">
+                <h2>Dirección de Entrega</h2>
+
+                <a href="/agregarDireccion" class="btn-secundario">Añadir nueva dirección de envío</a>
+
+                <label class="direccion-opcion" for="dir1">
+                    <input type="radio" id="dir1" name="direccion" value="1" checked required>
+                    <div class="direccion-datos">
+                        <strong>Calle: Parangaricutirimucuaro, #2077</strong>
+                        <span>Ciudad de México, CDMX</span>
+                        <span>Código Postal: 03230</span>
+                    </div>
+                </label>
+            </section>
+
+            <section class="checkout-card">
+                <h2>Método de Pago</h2>
+                <p class="pago-sub">Tarjeta de crédito o débito</p>
+
+                <div class="credenciales">
+                    <label for="titular">Nombre en la tarjeta (Titular)</label>
+                    <input type="text" id="titular" name="titular" placeholder="ALEJANDRO MORALES RIVAS" required minlength="5" maxlength="100">
+                </div>
+
+                <div class="credenciales">
+                    <label for="numeroTarjeta">Número de tarjeta</label>
+                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="4000 1234 5678 4092" required minlength="16" maxlength="19">
+                </div>
+
+                <div class="campos-fila">
+                    <div class="credenciales">
+                        <label for="expiracion">Fecha de expiración</label>
+                        <input type="text" id="expiracion" name="expiracion" placeholder="MM/AA" required minlength="5" maxlength="5">
+                    </div>
+                    <div class="credenciales">
+                        <label for="cvv">Código CVV</label>
+                        <input type="password" id="cvv" name="cvv" placeholder="•••" required minlength="3" maxlength="4">
+                    </div>
+                </div>
+            </section>
+
+            <button type="submit" class="btn-primary">Pagar $149.99 USD</button>
+        </form>
+    </main>
+</th:block>

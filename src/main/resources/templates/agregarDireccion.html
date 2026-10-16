@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Información de envío</title>
+    <main class="envio-container">
 
-</body>
-</html>
+        <a href="/carrito" class="btn-volver">
+            <img src="/imgs/flechaVolver.png" alt="">
+            <span>Volver al carrito</span>
+        </a>
+
+        <h1 class="envio-titulo">Información de envío - GamerHub</h1>
+
+        <section class="envio-card">
+            <h2>Dirección de Entrega</h2>
+
+            <form method="post" action="/direcciones" enctype="application/x-www-form-urlencoded">
+
+                <div class="credenciales">
+                    <label for="calle">Calle</label>
+                    <input type="text" id="calle" name="calle" placeholder="Parangaricutirimicuaro" required minlength="3" maxlength="100">
+                </div>
+
+                <div class="credenciales">
+                    <label for="numeroCasa">No. de casa</label>
+                    <input type="text" id="numeroCasa" name="numeroCasa" placeholder="2067" required maxlength="10">
+                </div>
+
+                <div class="credenciales">
+                    <label for="ciudad">Ciudad</label>
+                    <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad de México" required minlength="2" maxlength="60">
+                </div>
+
+                <div class="credenciales">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="estado" placeholder="CDMX" required minlength="2" maxlength="60">
+                </div>
+
+                <div class="credenciales">
+                    <label for="codigoPostal">Código Postal</label>
+                    <input type="text" id="codigoPostal" name="codigoPostal" placeholder="03230" required minlength="5" maxlength="5">
+                </div>
+
+                <button type="submit" class="btn-primary">Guardar Dirección Y Volver</button>
+            </form>
+        </section>
+    </main>
+</th:block>
