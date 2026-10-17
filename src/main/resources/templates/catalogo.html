@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Catálogo</title>
+    <main class="catalogo-container">
 
-</body>
-</html>
+        <form method="get" action="/catalogo" class="catalogo-busqueda">
+            <img src="/imgs/lupaBuscar.png" alt="imagen de una lupa">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar por título, saga">
+        </form>
+
+        <div class="catalogo-plataformas">
+            <a href="/catalogo" class="btn-plataforma activo"><img src="/imgs/todasLasPlataformas.png" alt="">Todas</a>
+            <a href="/catalogo?plataforma=PS5" class="btn-plataforma"><img src="/imgs/ps5.png" alt="">PS5</a>
+            <a href="/catalogo?plataforma=Xbox" class="btn-plataforma"><img src="/imgs/xbox.png" alt="">Xbox Series X</a>
+            <a href="/catalogo?plataforma=Switch" class="btn-plataforma"><img src="/imgs/nintendoSwitch.png" alt="">Nintendo Switch</a>
+        </div>
+
+        <form method="get" action="/catalogo" class="catalogo-ordenar">
+            <img src="/imgs/lineasDeOrdenar.png" alt=""><label for="orden">Ordenar:</label>
+            <select id="orden" name="orden" onchange="this.form.submit()">
+                <option value="novedades">Novedades</option>
+                <option value="precioMenor">Precio: menor a mayor</option>
+                <option value="precioMayor">Precio: mayor a menor</option>
+                <option value="nombre">Nombre A-Z</option>
+            </select>
+        </form>
+
+        <div class="catalogo-header">
+            <h2>Ediciones Físicas</h2>
+            <span>2 juegos</span>
+        </div>
+
+        <section class="catalogo-grid">
+
+            <article class="catalogo-card">
+                <div class="catalogo-card-imagen">
+                    <img src="/imgs/eldenRingShadow.jpeg" alt="Elden Ring: Shadow of the Erdtree">
+                </div>
+                <p class="catalogo-card-plataforma">PS5 • PLAYSTATION 5</p>
+                <h3>Elden Ring: Shadow of the Erdtree</h3>
+                <p class="catalogo-card-descripcion">Disco Blu-ray con expansión oficial incluida.</p>
+                <div class="catalogo-card-compra">
+                    <div>
+                        <p class="catalogo-card-precio-label">PRECIO</p>
+                        <p class="catalogo-card-precio">$59.99</p>
+                    </div>
+                    <a href="/carrito" class="btn-agregar">
+                        <img src="/imgs/carritoCatalogo.png" alt="Añadir Elden Ring al carrito">
+                    </a>
+                </div>
+            </article>
+
+            <article class="catalogo-card">
+                <div class="catalogo-card-imagen">
+                    <img src="/imgs/zeldatotk.jpg" alt="The Legend of Zelda: Tears of the Kingdom">
+                </div>
+                <p class="catalogo-card-plataforma">SWITCH • NINTENDO</p>
+                <h3>Zelda: Tears of the Kingdom</h3>
+                <p class="catalogo-card-descripcion">Edición física oficial con caja estándar y cartucho.</p>
+                <div class="catalogo-card-compra">
+                    <div>
+                        <p class="catalogo-card-precio-label">PRECIO</p>
+                        <p class="catalogo-card-precio">$54.99</p>
+                    </div>
+                    <a href="/carrito" class="btn-agregar">
+                        <img src="/imgs/carritoCatalogo.png" alt="Añadir Zelda al carrito">
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+</th:block>

@@ -41,4 +41,9 @@ public class GameController {
     public String pagoConfirmado(){
         return "pagoConfirmado";
     }
+
+    @GetMapping({"/catalogo"})
+    public String catalogo(){
+        return "catalogo";
+    }
 }
