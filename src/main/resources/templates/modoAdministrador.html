@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Panel - Admin GamerHub</title>
+    <main class="admin-container admin-dashboard">
 
-</body>
-</html>
+        <!-- bienvenida -->
+        <section class="admin-bienvenida">
+            <h1>Modo Administrador Activo</h1>
+            <p>Gestión central de stock y catálogo de ediciones físicas</p>
+            <nav>
+                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Título</a>
+                <a th:href="@{/admin/categorias}" class="btn-secundario">Editar categorías</a>
+            </nav>
+        </section>
+
+        <!-- tarjetas de resumen -->
+        <section class="admin-resumen">
+            <article class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Ventas Mes</p>
+                <p class="admin-resumen-valor">$24,850</p>
+            </article>
+            <article class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Órdenes Físicas</p>
+                <p class="admin-resumen-valor">42</p>
+            </article>
+            <article class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Títulos Físicos</p>
+                <p class="admin-resumen-valor">184</p>
+            </article>
+            <article class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Alerta Stock</p>
+                <p class="admin-resumen-valor">6 <small>críticos</small></p>
+            </article>
+        </section>
+
+
+        <!-- falta lo de historial de pedido y inventario en bodega -->
+
+    </main>
+</th:block>
