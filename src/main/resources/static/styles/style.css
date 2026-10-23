@@ -1005,4 +1005,118 @@ input:focus{
 }
 
 
+/* Estilos de admin */
+
+/* base de todas las pantallas de admin */
+body.admin {
+    background-color: var(--secondary-dark);
+    color: #FFFFFF;
+}
+
+.admin, .admin * {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.admin h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+}
+
+/* header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-dark);
+}
+
+.admin-header-marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admin-header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.admin-header strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    color: var(--accent-dark);
+}
+
+.admin-header small {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+}
+
+.admin-header img {
+    width: 2.25rem;
+    border-radius: 50%;
+}
+
+/* contenedor de cada pantalla */
+.admin-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+/* boton secundario (solo admin) */
+.admin .btn-secundario {
+    display: block;
+    margin-bottom: 0;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin .btn-secundario:hover {
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+}
+
+/* seleccionar nuevo titulo */
+.admin-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.admin-opciones nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* barra de abajo (solo admin) */
+.admin .barra-acciones {
+    margin-top: auto;
+    padding: 2.5rem 1rem;
+    background-color: var(--primary-dark);
+    border-radius: 16px 16px 0 0;
+}
+
+.admin .barra-acciones .btn-secundario {
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--secondary-dark);
+}
+
+
 
