@@ -37,7 +37,7 @@
 
 
         <!-- historial de pedidos -->
-        <section class="admin-seccion">
+        <div class="admin-seccion">
             <div>
                 <h2>Historial de Pedidos</h2>
                 <p class="admin-seccion-descripcion">Control de entregas, despachos y pagos validados.</p>
@@ -79,8 +79,50 @@
                         <span class="admin-pedido-precio">$249.99</span>
                     </div>
                 </div>
+
+                <div class="admin-pedido-card">
+                    <div class="admin-pedido-top">
+                        <h3>#GH-8941 <span class="admin-pedido-hora">Hoy, 13:05</span></h3>
+                        <div class="admin-pedido-estado">
+                            <span class="admin-badge admin-badge-procesando">Procesando</span>
+                            <a href="#">Cambiar Estado</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Ana López</p>
+                        <p class="admin-pedido-contacto">ana.lopez@email.com</p>
+                    </div>
+                    <div class="admin-pedido-producto">
+                        <div>
+                            <p>Zelda: Tears of the Kingdom</p>
+                            <p class="admin-pedido-contacto">2 unidades</p>
+                        </div>
+                        <span class="admin-pedido-precio">$139.98</span>
+                    </div>
+                </div>
+
+                <div class="admin-pedido-card">
+                    <div class="admin-pedido-top">
+                        <h3>#GH-8939 <span class="admin-pedido-hora">Hoy, 11:47</span></h3>
+                        <div class="admin-pedido-estado">
+                            <span class="admin-badge admin-badge-pendiente">Pendiente</span>
+                            <a href="#">Cambiar Estado</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Jorge Ruiz</p>
+                        <p class="admin-pedido-contacto">j@email.com</p>
+                    </div>
+                    <div class="admin-pedido-producto">
+                        <div>
+                            <p>Halo Infinite Steelbook Edition</p>
+                            <p class="admin-pedido-contacto">1 unidad</p>
+                        </div>
+                        <span class="admin-pedido-precio">$89.98</span>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
     </main>
 </th:block>
