@@ -1208,5 +1208,54 @@ body.admin {
     font-size: 0.75rem;
 }
 
+/* secciones del dashboard */
+.admin-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.admin-seccion h2 {
+    margin-bottom: 0.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.375rem;
+}
+
+.admin-seccion-descripcion {
+    color: var(--texto-tenue);
+    font-size: 0.875rem;
+}
+
+/* buscador */
+.admin-buscador {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background-color: var(--secondary-dark);
+}
+
+.admin-buscador img {
+    width: 1.25rem;
+}
+
+.admin-buscador input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+}
+
+.admin-buscador input::placeholder {
+    color: var(--texto-tenue);
+}
+
+.admin-buscador input:focus {
+    outline: none;
+}
+
 
 

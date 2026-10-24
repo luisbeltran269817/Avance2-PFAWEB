@@ -34,7 +34,18 @@
         </section>
 
 
-        <!-- falta lo de historial de pedido y inventario en bodega -->
+        <!-- historial de pedidos -->
+        <section class="admin-seccion">
+            <div>
+                <h2>Historial de Pedidos</h2>
+                <p class="admin-seccion-descripcion">Control de entregas, despachos y pagos validados.</p>
+            </div>
+
+            <form class="admin-buscador">
+                <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
+                <input type="search" name="buscar" placeholder="Buscar por cliente, correo o # Orden...">
+            </form>
+        </section>
 
     </main>
 </th:block>
