@@ -4,34 +4,36 @@
     <main class="admin-container admin-dashboard">
 
         <!-- bienvenida -->
-        <section class="admin-bienvenida">
-            <h1>Modo Administrador Activo</h1>
-            <p>Gestión central de stock y catálogo de ediciones físicas</p>
-            <nav>
-                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Título</a>
-                <a th:href="@{/admin/categorias}" class="btn-secundario">Editar categorías</a>
-            </nav>
-        </section>
+        <div class="admin-bienvenida">
+            <div>
+                <h1>Modo Administrador Activo</h1>
+                <p>Gestion central de stock y catalogo de ediciones fisicas</p>
+            </div>
+            <div class="admin-bienvenida-acciones">
+                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Titulo</a>
+                <a th:href="@{/admin/categorias}" class="btn-secundario">Editar categorias</a>
+            </div>
+        </div>
 
         <!-- tarjetas de resumen -->
-        <section class="admin-resumen">
-            <article class="admin-resumen-card">
+        <div class="admin-resumen">
+            <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Ventas Mes</p>
                 <p class="admin-resumen-valor">$24,850</p>
-            </article>
-            <article class="admin-resumen-card">
+            </div>
+            <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Órdenes Físicas</p>
                 <p class="admin-resumen-valor">42</p>
-            </article>
-            <article class="admin-resumen-card">
+            </div>
+            <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Títulos Físicos</p>
                 <p class="admin-resumen-valor">184</p>
-            </article>
-            <article class="admin-resumen-card">
+            </div>
+            <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Alerta Stock</p>
-                <p class="admin-resumen-valor">6 <small>críticos</small></p>
-            </article>
-        </section>
+                <p class="admin-resumen-valor">6 <span class="admin-resumen-unidad">críticos</span></p>
+            </div>
+        </div>
 
 
         <!-- historial de pedidos -->
@@ -46,7 +48,7 @@
                 <input type="search" name="buscar" placeholder="Buscar por cliente, correo o # Orden...">
             </form>
             <div class="admin-fecha">
-                <span>Hoy 24 Oct 2025</span>
+                <span>Hoy 24 Oct 2026</span>
                 <a href="#">Cambiar</a>
             </div>
 
