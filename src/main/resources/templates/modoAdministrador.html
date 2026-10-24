@@ -45,6 +45,16 @@
                 <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
                 <input type="search" name="buscar" placeholder="Buscar por cliente, correo o # Orden...">
             </form>
+            <div class="admin-fecha">
+                <span>Hoy 24 Oct 2025</span>
+                <a href="#">Cambiar</a>
+            </div>
+
+            <div class="admin-filtros">
+                <button type="button" class="admin-chip activo">Todos <span class="admin-contador">42</span></button>
+                <button type="button" class="admin-chip"><span class="admin-punto-pendiente">●</span> Pendiente (8)</button>
+                <button type="button" class="admin-chip"><span class="admin-punto-procesando">●</span> Procesando (12)</button>
+            </div>
         </section>
 
     </main>

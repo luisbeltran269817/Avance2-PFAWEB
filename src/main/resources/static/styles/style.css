@@ -1012,6 +1012,7 @@ body.admin {
     background-color: var(--secondary-dark);
     color: #FFFFFF;
     --texto-tenue: #94a3b8;
+     --estado-warning: #EBBF00;
 }
 
 .admin, .admin * {
@@ -1257,5 +1258,60 @@ body.admin {
     outline: none;
 }
 
+/* fecha */
+.admin-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background-color: var(--secondary-dark);
+    font-size: 0.875rem;
+}
+
+.admin-fecha a {
+    color: var(--accent-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* filtros */
+.admin-filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+}
+
+.admin-chip {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 9999px;
+    background-color: var(--secondary-dark);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-chip.activo {
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+}
+
+.admin-contador {
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--primary-dark);
+    color: var(--accent-dark);
+}
+
+.admin-punto-pendiente {
+    color: var(--estado-warning);
+}
+
+.admin-punto-procesando {
+    color: var(--accent-dark);
+}
 
 
