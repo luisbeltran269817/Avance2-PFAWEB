@@ -1166,9 +1166,12 @@ body.admin {
     font-size: 0.875rem;
 }
 
-.admin-bienvenida-acciones a {
+.admin-bienvenida-acciones {
     display: flex;
     gap: 0.5rem;
+}
+.admin-bienvenida-acciones a {
+    flex: 1;
 }
 
 .admin-bienvenida .btn-acento,
