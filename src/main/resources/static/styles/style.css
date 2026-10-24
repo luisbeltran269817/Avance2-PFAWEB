@@ -1170,7 +1170,7 @@ body.admin {
     display: flex;
     gap: 0.5rem;
 }
-.admin-bienvenida-acciones a {
+.admin-bienvenida-acciones-a {
     flex: 1;
 }
 
@@ -1204,7 +1204,7 @@ body.admin {
     font-weight: 700;
 }
 
-.admin-resumen-unidad{
+.admin-resumen-unidad {
     color: var(--texto-tenue);
     font-size: 0.75rem;
 }
@@ -1312,6 +1312,91 @@ body.admin {
 
 .admin-punto-procesando {
     color: var(--accent-dark);
+}
+
+/* lista de pedidos */
+.admin-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* tarjeta de pedido */
+.admin-pedido-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--secondary-dark);
+}
+
+.admin-pedido-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.admin-pedido-top h3 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+}
+
+.admin-pedido-hora {
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.admin-pedido-estado {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.5rem;
+}
+
+.admin-pedido-estado a {
+    color: var(--accent-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.admin-pedido-contacto {
+    color: var(--texto-tenue);
+    font-size: 0.875rem;
+}
+
+.admin-pedido-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.admin-pedido-precio {
+    color: var(--accent-dark);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* etiquetas de estado */
+.admin-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-badge-pendiente {
+    background-color: rgba(235, 191, 0, 0.2);
+    color: var(--estado-warning);
+    border: 1px solid var(--estado-warning);
 }
 
 /* admin movil */
