@@ -1332,6 +1332,7 @@ body.admin {
 .admin-pedido-top,
 .admin-producto-top{
     display: flex;
+    gap: 0.5rem;
     justify-content: space-between;
     align-items: start;
 }
@@ -1413,7 +1414,7 @@ body.admin {
     color: var(--estado-warning);
 }
 
-* tarjeta de producto */
+/* tarjeta de producto */
 .admin-producto-sku {
     color: var(--texto-tenue);
     font-size: 0.75rem;
