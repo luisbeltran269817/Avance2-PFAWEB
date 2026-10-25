@@ -1318,7 +1318,8 @@ body.admin {
 }
 
 /* tarjeta de pedido */
-.admin-pedido-card {
+.admin-pedido-card,
+.admin-producto-card  {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -1328,13 +1329,15 @@ body.admin {
     background-color: var(--secondary-dark);
 }
 
-.admin-pedido-top {
+.admin-pedido-top,
+.admin-producto-top{
     display: flex;
     justify-content: space-between;
     align-items: start;
 }
 
-.admin-pedido-top h3 {
+.admin-pedido-top h3,
+.admin-producto-top h3{
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.25rem;
@@ -1408,6 +1411,38 @@ body.admin {
 
 .admin-chip-bajo {
     color: var(--estado-warning);
+}
+
+* tarjeta de producto */
+.admin-producto-sku {
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.admin-etiquetas {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-etiqueta {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background-color: var(--primary-dark);
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.admin-etiqueta-plataforma {
+    color: var(--accent-dark);
+}
+
+.admin-badge-critico {
+    background-color: var(--estado-error);
+    color: #FFFFFF;
+    border: 1px solid var(--estado-error);
 }
 
 /* admin movil */
