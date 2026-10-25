@@ -1393,13 +1393,15 @@ body.admin {
     letter-spacing: 0.5px;
 }
 
-.admin-badge-pendiente {
+.admin-badge-pendiente,
+.admin-badge-bajo{
     background-color: rgba(235, 191, 0, 0.2);
     color: var(--estado-warning);
     border: 1px solid var(--estado-warning);
 }
 
-.admin-badge-procesando {
+.admin-badge-procesando,
+.admin-badge-normal{
     background-color: rgba(6, 182, 212, 0.2);
     color: var(--accent-dark);
     border: 1px solid var(--accent-dark);
@@ -1412,6 +1414,12 @@ body.admin {
 
 .admin-chip-bajo {
     color: var(--estado-warning);
+}
+
+.admin-badge-moderado {
+    background-color: rgba(148, 163, 184, 0.2);
+    color: var(--texto-tenue);
+    border: 1px solid var(--texto-tenue);
 }
 
 /* tarjeta de producto */
