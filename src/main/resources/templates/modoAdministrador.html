@@ -124,7 +124,7 @@
             </div>
         </div>
 
-        
+
         <!-- inventario en bodega -->
         <div class="admin-seccion">
             <div>
@@ -136,6 +136,14 @@
                 <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
                 <input type="search" name="buscarProducto" placeholder="Buscar por título, SKU o código de barra...">
             </form>
+
+            <div class="admin-filtros">
+                <button type="button" class="admin-chip activo">Todos (184)</button>
+                <button type="button" class="admin-chip admin-chip-critico">Crítico (6)</button>
+                <button type="button" class="admin-chip admin-chip-bajo">Bajo (14)</button>
+                <button type="button" class="admin-chip">Normal (122)</button>
+            </div>
+
         </div>
     </main>
 </th:block>

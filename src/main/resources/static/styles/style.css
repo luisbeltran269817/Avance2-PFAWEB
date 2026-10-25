@@ -1013,6 +1013,7 @@ body.admin {
     color: #FFFFFF;
     --texto-tenue: #94a3b8;
     --estado-warning: #EBBF00;
+    --estado-error: #CC1C00;
 }
 
 .admin, .admin * {
@@ -1398,6 +1399,15 @@ body.admin {
     background-color: rgba(6, 182, 212, 0.2);
     color: var(--accent-dark);
     border: 1px solid var(--accent-dark);
+}
+
+/* chips de stock */
+.admin-chip-critico {
+    background-color: var(--estado-error);
+}
+
+.admin-chip-bajo {
+    color: var(--estado-warning);
 }
 
 /* admin movil */
