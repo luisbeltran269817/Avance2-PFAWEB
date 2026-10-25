@@ -1446,6 +1446,34 @@ body.admin {
     border: 1px solid var(--estado-error);
 }
 
+
+/* acciones de producto */
+.admin-producto-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-producto-activo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+}
+
+.admin-producto-botones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-producto-botones .btn-secundario,
+.admin-producto-botones .btn-acento {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
 /* admin movil */
 @media (min-width: 390px) {
     .admin-bienvenida {
