@@ -1,10 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/base :: layout(~{::title},~{::main})}">
+    <title>Elden Ring: Shadow of the Erdtree</title>
+    <main class="producto-container">
 
-</body>
-</html>
+        <div class="producto-acciones">
+            <a href="/catalogo" class="btn-volver">
+                <img src="/imgs/flechaVolver.png" alt="">
+                <span>Volver al Catálogo</span>
+            </a>
+        </div>
+        <section class="producto-galeria">
+            <input type="radio" id="foto1" name="foto" checked>
+            <input type="radio" id="foto2" name="foto">
+            <input type="radio" id="foto3" name="foto">
+            <input type="radio" id="foto4" name="foto">
+
+            <div class="producto-imagen-principal">
+                <img class="foto1" src="/imgs/eldenRingShadow.jpeg" alt="Box set coleccionista completo">
+                <img class="foto2" src="/imgs/eldenRingCaja.png" alt="Caja steelbook">
+                <img class="foto3" src="/imgs/eldenRingLibro.png" alt="Libro de arte">
+                <img class="foto4" src="/imgs/eldenRingDisco.png" alt="Disco físico">
+            </div>
+
+            <div class="producto-miniaturas">
+                <label for="foto1"><img src="/imgs/eldenRingShadow.jpeg" alt="Ver box set"></label>
+                <label for="foto2"><img src="/imgs/eldenRingCaja.png" alt="Ver caja steelbook"></label>
+                <label for="foto3"><img src="/imgs/eldenRingLibro.png" alt="Ver libro de arte"></label>
+                <label for="foto4"><img src="/imgs/eldenRingDisco.png" alt="Ver disco físico"></label>
+            </div>
+        </section>
+
+        <section class="producto-info">
+            <p class="producto-marca">FROMSOFTWARE • BANDAI NAMCO</p>
+            <h1>Elden Ring: Shadow of the Erdtree — Collector’s Edition</h1>
+            <p class="producto-plataforma">PS5 • 1 Disco Físico</p>
+            <p class="producto-precio">$149.99</p>
+            <p class="producto-nota">Precio final incluye impuestos de importación e IVA.</p>
+        </section>
+
+        <form method="post" action="/carrito/agregar" class="producto-compra" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="idProducto" value="1">
+
+            <div class="producto-cantidad-fila">
+                <label for="cantidad">Cantidad a Comprar</label>
+                <div class="producto-contador">
+                    <button type="button">−</button>
+                    <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="10" required>
+                    <button type="button">+</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Agregar al Carrito</button>
+
+            <div class="producto-envio">
+                <img src="/imgs/escudo.png" alt="">
+                <p><strong>Empaque Blindado Garantizado:</strong> Doble caja corrugada reforzada, esquineros de poliestireno y plástico burbuja especial para proteger los bordes de la caja de colección.</p>
+            </div>
+        </form>
+
+        <section class="producto-ficha">
+            <h2>Ficha técnica</h2>
+            <div class="producto-ficha-fila">
+                <span>Soporte Físico:</span>
+                <span>Disco Blu-Ray 4K (66GB)</span>
+            </div>
+            <div class="producto-ficha-fila">
+                <span>Región:</span>
+                <span>Región 1 / Global (Sin bloqueo)</span>
+            </div>
+            <div class="producto-ficha-fila">
+                <span>Idiomas / Voces:</span>
+                <span>Español, Inglés, Japonés</span>
+            </div>
+            <div class="producto-ficha-fila">
+                <span>Dimensiones:</span>
+                <span>34 x 26 x 16 cm • 1.45 kg</span>
+            </div>
+            <div class="producto-ficha-fila">
+                <span>Estado:</span>
+                <span class="producto-estado">100% Nuevo y Sellado de Fábrica</span>
+            </div>
+        </section>
+
+        <section class="producto-sinopsis">
+            <input type="checkbox" id="sinopsisAbierta">
+            <div class="producto-sinopsis-titulo">
+                <h3>Sinopsis de la Expansión</h3>
+                <img src="/imgs/sinopsis.png" alt="">
+            </div>
+            <p class="producto-sinopsis-texto">Guiados por el Emípyreo Miquella, los jugadores son convocados a la Tierra Sombría, un lugar ensombrecido por el Árbol Áureo donde la diosa</p>
+            <label for="sinopsisAbierta" class="producto-sinopsis-boton">
+                <span class="leer-mas">Leer más...</span>
+                <span class="leer-menos">Leer menos</span>
+            </label>
+        </section>
+    </main>
+</th:block>

@@ -46,4 +46,9 @@ public class GameController {
     public String catalogo(){
         return "catalogo";
     }
+
+    @GetMapping("/verProducto")
+    public String verProducto(){
+        return "verProducto";
+    }
 }
