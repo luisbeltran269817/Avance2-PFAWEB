@@ -1342,4 +1342,494 @@ input:focus{
 
 
 
+/* Estilos de admin */
+
+/* base de todas las pantallas de admin */
+body.admin {
+    background-color: var(--secondary-dark);
+    color: #FFFFFF;
+    --texto-tenue: #94a3b8;
+    --estado-warning: #EBBF00;
+    --estado-error: #CC1C00;
+}
+
+.admin, .admin * {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.admin h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+}
+
+/* header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-dark);
+}
+
+.admin-header-marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.admin-header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.admin-header strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    color: var(--accent-dark);
+}
+
+.admin-header small {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+}
+
+.admin-header img {
+    width: 2.25rem;
+    border-radius: 50%;
+}
+
+/* contenedor de cada pantalla */
+.admin-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+/* boton secundario para admin */
+.admin .btn-secundario {
+    display: block;
+    margin-bottom: 0;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin .btn-secundario:hover {
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+}
+
+/* seleccionar nuevo titulo */
+.admin-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.admin-opciones nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* barra de abajo para admin */
+.admin .barra-acciones {
+    margin-top: auto;
+    padding: 2.5rem 1rem;
+    background-color: var(--primary-dark);
+    border-radius: 16px 16px 0 0;
+}
+
+.admin .barra-acciones .btn-secundario {
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--secondary-dark);
+}
+
+/* boton de accion principal para admin */
+.admin .btn-acento {
+    display: block;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin .btn-acento:hover {
+    background-color: #FFFFFF;
+}
+
+/* dashboard */
+.admin-dashboard {
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    background-color: var(--primary-dark);
+}
+
+/* bienvenida */
+.admin-bienvenida {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border-radius: 16px;
+    background-color: var(--secondary-dark);
+}
+
+.admin-bienvenida h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.admin-bienvenida p {
+    color: var(--texto-tenue);
+    font-size: 0.875rem;
+}
+
+.admin-bienvenida-acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+.admin-bienvenida-acciones a {
+    flex: 1;
+}
+
+.admin-bienvenida .btn-acento,
+.admin-bienvenida .btn-secundario {
+    font-size: 0.875rem;
+}
+
+/* tarjetas de resumen */
+.admin-resumen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.admin-resumen-card {
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: var(--secondary-dark);
+}
+
+.admin-resumen-titulo {
+    margin-bottom: 0.25rem;
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+}
+
+.admin-resumen-valor {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.admin-resumen-unidad {
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+}
+
+/* secciones del dashboard */
+.admin-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.admin-seccion h2 {
+    margin-bottom: 0.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.375rem;
+}
+
+.admin-seccion-descripcion {
+    color: var(--texto-tenue);
+    font-size: 0.875rem;
+}
+
+/* buscador */
+.admin-buscador {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background-color: var(--secondary-dark);
+}
+
+.admin-buscador img {
+    width: 1.25rem;
+}
+
+.admin-buscador input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+}
+
+.admin-buscador input:focus {
+    outline: none;
+}
+
+/* fecha */
+.admin-fecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background-color: var(--secondary-dark);
+    font-size: 0.875rem;
+}
+
+.admin-fecha a {
+    color: var(--accent-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* filtros */
+.admin-filtros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.admin-chip {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 9999px;
+    background-color: var(--secondary-dark);
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-chip.activo {
+    background-color: var(--accent-dark);
+    color: var(--primary-dark);
+}
+
+.admin-contador {
+    padding: 0 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--primary-dark);
+    color: var(--accent-dark);
+}
+
+.admin-punto-pendiente {
+    color: var(--estado-warning);
+}
+
+.admin-punto-procesando {
+    color: var(--accent-dark);
+}
+
+/* lista de pedidos */
+.admin-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* tarjeta de pedido */
+.admin-pedido-card,
+.admin-producto-card  {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--secondary-dark);
+}
+
+.admin-pedido-top,
+.admin-producto-top{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.admin-pedido-top h3,
+.admin-producto-top h3{
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+}
+
+.admin-pedido-hora {
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.admin-pedido-estado {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.5rem;
+}
+
+.admin-pedido-estado a {
+    color: var(--accent-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.admin-pedido-contacto {
+    color: var(--texto-tenue);
+    font-size: 0.875rem;
+}
+
+.admin-pedido-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.admin-pedido-precio {
+    color: var(--accent-dark);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* etiquetas de estado */
+.admin-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-badge-pendiente,
+.admin-badge-bajo{
+    background-color: rgba(235, 191, 0, 0.2);
+    color: var(--estado-warning);
+    border: 1px solid var(--estado-warning);
+}
+
+.admin-badge-procesando,
+.admin-badge-normal{
+    background-color: rgba(6, 182, 212, 0.2);
+    color: var(--accent-dark);
+    border: 1px solid var(--accent-dark);
+}
+
+/* chips de stock */
+.admin-chip-critico {
+    background-color: var(--estado-error);
+}
+
+.admin-chip-bajo {
+    color: var(--estado-warning);
+}
+
+.admin-badge-moderado {
+    background-color: rgba(148, 163, 184, 0.2);
+    color: var(--texto-tenue);
+    border: 1px solid var(--texto-tenue);
+}
+
+/* tarjeta de producto */
+.admin-producto-sku {
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.admin-etiquetas {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-etiqueta {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background-color: var(--primary-dark);
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.admin-etiqueta-plataforma {
+    color: var(--accent-dark);
+}
+
+.admin-badge-critico {
+    background-color: var(--estado-error);
+    color: #FFFFFF;
+    border: 1px solid var(--estado-error);
+}
+
+
+/* acciones de producto */
+.admin-producto-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-producto-activo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--texto-tenue);
+    font-size: 0.75rem;
+}
+
+.admin-producto-botones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-producto-botones .btn-secundario,
+.admin-producto-botones .btn-acento {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* admin movil */
+@media (min-width: 390px) {
+    .admin-bienvenida {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .admin-bienvenida-acciones {
+        flex-direction: column;
+    }
+}
+
 

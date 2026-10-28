@@ -1,10 +1,239 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Panel - Admin GamerHub</title>
+    <main class="admin-container admin-dashboard">
 
-</body>
-</html>
+        <!-- bienvenida -->
+        <div class="admin-bienvenida">
+            <div>
+                <h1>Modo Administrador Activo</h1>
+                <p>Gestion central de stock y catalogo de ediciones fisicas</p>
+            </div>
+            <div class="admin-bienvenida-acciones">
+                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Titulo</a>
+                <a th:href="@{/admin/categorias}" class="btn-secundario">Editar categorias</a>
+            </div>
+        </div>
+
+        <!-- tarjetas de resumen -->
+        <div class="admin-resumen">
+            <div class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Ventas Mes</p>
+                <p class="admin-resumen-valor">$24,850</p>
+            </div>
+            <div class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Órdenes Físicas</p>
+                <p class="admin-resumen-valor">42</p>
+            </div>
+            <div class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Títulos Físicos</p>
+                <p class="admin-resumen-valor">184</p>
+            </div>
+            <div class="admin-resumen-card">
+                <p class="admin-resumen-titulo">Alerta Stock</p>
+                <p class="admin-resumen-valor">6 <span class="admin-resumen-unidad">críticos</span></p>
+            </div>
+        </div>
+
+
+        <!-- historial de pedidos -->
+        <div class="admin-seccion">
+            <div>
+                <h2>Historial de Pedidos</h2>
+                <p class="admin-seccion-descripcion">Control de entregas, despachos y pagos validados.</p>
+            </div>
+
+            <form class="admin-buscador">
+                <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
+                <input type="search" name="buscar" placeholder="Buscar por cliente, correo o # Orden...">
+            </form>
+            <div class="admin-fecha">
+                <span>Hoy 24 Oct 2026</span>
+                <a href="#">Cambiar</a>
+            </div>
+
+            <div class="admin-filtros">
+                <button type="button" class="admin-chip activo">Todos <span class="admin-contador">42</span></button>
+                <button type="button" class="admin-chip"><span class="admin-punto-pendiente">*</span> Pendiente (8)</button>
+                <button type="button" class="admin-chip"><span class="admin-punto-procesando">*</span> Procesando (12)</button>
+            </div>
+
+            <div class="admin-lista">
+                <div class="admin-pedido-card">
+                    <div class="admin-pedido-top">
+                        <h3>#GH-8942 <span class="admin-pedido-hora">Hoy, 14:32</span></h3>
+                        <div class="admin-pedido-estado">
+                            <span class="admin-badge admin-badge-pendiente">Pendiente</span>
+                            <a href="#">Cambiar Estado</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Kevin Mendoza</p>
+                        <p class="admin-pedido-contacto">mendoza@email.com</p>
+                    </div>
+                    <div class="admin-pedido-producto">
+                        <div>
+                            <p>Elden Ring: Erdtree Collector's Ed.</p>
+                            <p class="admin-pedido-contacto">1 unidad</p>
+                        </div>
+                        <span class="admin-pedido-precio">$249.99</span>
+                    </div>
+                </div>
+
+                <div class="admin-pedido-card">
+                    <div class="admin-pedido-top">
+                        <h3>#GH-8941 <span class="admin-pedido-hora">Hoy, 13:05</span></h3>
+                        <div class="admin-pedido-estado">
+                            <span class="admin-badge admin-badge-procesando">Procesando</span>
+                            <a href="#">Cambiar Estado</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Ana López</p>
+                        <p class="admin-pedido-contacto">ana.lopez@email.com</p>
+                    </div>
+                    <div class="admin-pedido-producto">
+                        <div>
+                            <p>Zelda: Tears of the Kingdom</p>
+                            <p class="admin-pedido-contacto">2 unidades</p>
+                        </div>
+                        <span class="admin-pedido-precio">$139.98</span>
+                    </div>
+                </div>
+
+                <div class="admin-pedido-card">
+                    <div class="admin-pedido-top">
+                        <h3>#GH-8939 <span class="admin-pedido-hora">Hoy, 11:47</span></h3>
+                        <div class="admin-pedido-estado">
+                            <span class="admin-badge admin-badge-pendiente">Pendiente</span>
+                            <a href="#">Cambiar Estado</a>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Jorge Ruiz</p>
+                        <p class="admin-pedido-contacto">j@email.com</p>
+                    </div>
+                    <div class="admin-pedido-producto">
+                        <div>
+                            <p>Halo Infinite Steelbook Edition</p>
+                            <p class="admin-pedido-contacto">1 unidad</p>
+                        </div>
+                        <span class="admin-pedido-precio">$89.98</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- inventario en bodega -->
+        <div class="admin-seccion">
+            <div>
+                <h2>Inventario en Bodega</h2>
+                <p class="admin-seccion-descripcion">184 items físicos catalogados y clasificados.</p>
+            </div>
+
+            <form class="admin-buscador">
+                <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
+                <input type="search" name="buscarProducto" placeholder="Buscar por título, SKU o código de barra...">
+            </form>
+
+            <div class="admin-filtros">
+                <button type="button" class="admin-chip activo">Todos (184)</button>
+                <button type="button" class="admin-chip admin-chip-critico">Crítico (6)</button>
+                <button type="button" class="admin-chip admin-chip-bajo">Bajo (14)</button>
+                <button type="button" class="admin-chip">Normal (122)</button>
+            </div>
+
+            <div class="admin-lista">
+                <div class="admin-producto-card">
+                    <div class="admin-producto-top">
+                        <h3>Halo Infinite Steelbook Edition</h3>
+                        <span class="admin-badge admin-badge-critico">Crítico</span>
+                    </div>
+                    <p class="admin-producto-sku">SKU: MS-HALO-SB-8821</p>
+                    <div class="admin-etiquetas">
+                        <span class="admin-etiqueta admin-etiqueta-plataforma">Xbox Series X/S</span>
+                        <span class="admin-etiqueta">2 en almacén</span>
+                    </div>
+                    <div class="admin-producto-acciones">
+                        <div class="admin-producto-activo">
+                            <input type="checkbox" id="activo-halo" checked>
+                            <label for="activo-halo">Catálogo Activo</label>
+                        </div>
+                        <div class="admin-producto-botones">
+                            <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
+                            <a th:href="@{/admin/stock}" class="btn-acento">+Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-producto-card">
+                    <div class="admin-producto-top">
+                        <h3>Resident Evil 4 Remake</h3>
+                        <span class="admin-badge admin-badge-bajo">Bajo</span>
+                    </div>
+                    <p class="admin-producto-sku">SKU: CAP-RE4-PS5-104</p>
+                    <div class="admin-etiquetas">
+                        <span class="admin-etiqueta admin-etiqueta-plataforma">PS5</span>
+                        <span class="admin-etiqueta">5 en almacén</span>
+                    </div>
+                    <div class="admin-producto-acciones">
+                        <div class="admin-producto-activo">
+                            <input type="checkbox" id="activo-re4" checked>
+                            <label for="activo-re4">Catálogo Activo</label>
+                        </div>
+                        <div class="admin-producto-botones">
+                            <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
+                            <a th:href="@{/admin/stock}" class="btn-acento">+Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-producto-card">
+                    <div class="admin-producto-top">
+                        <h3>Elden Ring: Erdtree Ed.</h3>
+                        <span class="admin-badge admin-badge-normal">Normal</span>
+                    </div>
+                    <p class="admin-producto-sku">SKU: FS-ELDR-PS5-901</p>
+                    <div class="admin-etiquetas">
+                        <span class="admin-etiqueta admin-etiqueta-plataforma">PS5</span>
+                        <span class="admin-etiqueta">38 en almacén</span>
+                    </div>
+                    <div class="admin-producto-acciones">
+                        <div class="admin-producto-activo">
+                            <input type="checkbox" id="activo-elden" checked>
+                            <label for="activo-elden">Catálogo Activo</label>
+                        </div>
+                        <div class="admin-producto-botones">
+                            <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
+                            <a th:href="@{/admin/stock}" class="btn-acento">+Stock</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-producto-card">
+                    <div class="admin-producto-top">
+                        <h3>Zelda: Tears of the Kingdom</h3>
+                        <span class="admin-badge admin-badge-moderado">Moderado</span>
+                    </div>
+                    <p class="admin-producto-sku">SKU: NT-TOTK-SW-302</p>
+                    <div class="admin-etiquetas">
+                        <span class="admin-etiqueta admin-etiqueta-plataforma">Switch</span>
+                        <span class="admin-etiqueta">18 en almacén</span>
+                    </div>
+                    <div class="admin-producto-acciones">
+                        <div class="admin-producto-activo">
+                            <input type="checkbox" id="activo-zelda" checked>
+                            <label for="activo-zelda">Catálogo Activo</label>
+                        </div>
+                        <div class="admin-producto-botones">
+                            <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
+                            <a th:href="@{/admin/stock}" class="btn-acento">+Stock</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</th:block>
