@@ -1471,6 +1471,7 @@ body.admin {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: none;
 }
 
 .admin .btn-acento:hover {
@@ -1817,6 +1818,33 @@ body.admin {
 .admin-producto-botones .btn-acento {
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
+}
+
+/* ajuste de stock */
+.admin-formulario {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-formulario-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem 2rem;
+}
+
+.admin-formulario-contenido h1 {
+    margin-bottom: 0.25rem;
+}
+
+.admin-sku-acento {
+    color: var(--accent-dark);
+}
+
+.admin .barra-acciones .btn-acento {
+    width: 70%;
+    margin: 0 auto 1rem;
 }
 
 /* admin movil */
