@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Agregar Stock - Admin GamerHub</title>
+    <main class="admin-container">
+        <form class="admin-formulario">
+            <div class="admin-formulario-contenido">
+                <div>
+                    <h1>Agregar Stock</h1>
+                    <p class="admin-seccion-descripcion">Halo Infinite Steelbook Edition</p>
+                    <p class="admin-producto-sku admin-sku-acento">SKU: MS-HALO-SB-8821</p>
+                </div>
 
-</body>
-</html>
+                <!--stock actual y nuevo-->
+            </div>
+
+            <div class="barra-acciones">
+                <button type="submit" class="btn-acento">Confirmar</button>
+                <a th:href="@{/admin}" class="btn-secundario">Cancelar / Volver</a>
+            </div>
+        </form>
+    </main>
+</th:block>

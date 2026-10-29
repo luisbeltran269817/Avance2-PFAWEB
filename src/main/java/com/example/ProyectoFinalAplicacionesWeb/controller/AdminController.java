@@ -15,4 +15,9 @@ public class AdminController {
     public String nuevoTitulo() {
         return "seleccionarNuevoTitulo";
     }
+
+    @GetMapping("/admin/stock")
+    public String ajusteStock() {
+        return "ajusteStock";
+    }
 }
