@@ -17,6 +17,10 @@ public class GameController {
         return "inicioSesion";
     }
 
+    //metodo hecho por kevin pero alguien lo quito, sospecho que con un merge
+    @GetMapping({"/perfil"})
+    public String perfil(){return "perfil";}
+
     @GetMapping({"/registro"})
     public String registro(){
         return "registro";
@@ -25,6 +29,11 @@ public class GameController {
     @GetMapping({"/carrito"})
     public String carrito(){
         return "carrito";
+    }
+
+    @GetMapping({"/ordenes"})
+    public String ordenes(){
+        return "ordenes";
     }
 
     @GetMapping({"/finalizarCompra"})

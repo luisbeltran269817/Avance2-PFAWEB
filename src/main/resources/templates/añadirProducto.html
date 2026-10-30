@@ -1,10 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Añadir producto</title>
+    <main class = "admin-container">
+        <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Añadir nuevo producto</h1>
 
-</body>
-</html>
+<!--        poner en el action algo para guardar el producto ej: (th:object="${producto}")-->
+        <form class="nuevoProductoForm" th:action="@{/admin/productos/guardarProducto}" method="post">
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="nombre">Nombre</label>
+                <input style="font-size: 1rem; background-color: var(--tertiary-dark)" class="inputNuevoProductoForm" type="text" id="nombre" name="nombre" placeholder="Escriba un nombre..." required>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="descripcion">Descripción</label>
+                <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcion" name="descripcion" placeholder="Escriba una descripción..." required></textarea>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="categoria">Categoría</label>
+                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="categoria" name="categoria" required>
+                    <option value="" selected>--Seleccione una categoría--</option>
+                    <option value="shooter">Shooter</option>
+                    <option value="rpg">RPG</option>
+                    <option value="construccion">Construcción</option>
+                </select>
+            </div>
+
+            <fieldset class="imagenesNuevoProductoForm">
+                <label class="labelNuevoProductoForm">Imágenes</label>
+
+                <div class="image-card">
+                    <div class="image-card__preview">
+                        <img src="" alt="imagen del producto" class="image-card__img">
+                    </div>
+
+                    <div class="image-card__fields">
+                        <div class="image-card__row">
+                            <label for="imagen-url-0">URL:</label>
+                            <input
+                                    class="image-card__input"
+                                    type="url"
+                                    id="imagen-url-0"
+                                    name="imagenes[0].url"
+                                    placeholder="poner una URL..."
+                            >
+                        </div>
+
+                        <div class="image-card__row">
+                            <label for="imagen-principal-0">Principal:</label>
+                            <input
+                                    class="image-card__check"
+                                    type="checkbox"
+                                    id="imagen-principal-0"
+                                    name="imagenes[0].principal"
+                            >
+                        </div>
+
+                        <div class="image-card__row">
+                            <label for="imagen-orden-0">Orden:</label>
+                            <input
+                                    class="image-card__input image-card__input--num"
+                                    type="number"
+                                    id="imagen-orden-0"
+                                    name="imagenes[0].orden"
+                                    placeholder="num"
+                                    min="1"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-secundario">Añadir nueva imagen</button>
+            </fieldset>
+
+            <div class="botonesAdminConfirmarCancelar">
+                <button type="submit" class="btn-primary">Confirmar</button>
+                <button type="button" class="btn-secundario">Cancelar / Volver</button>
+            </div>
+
+        </form>
+    </main>
+</th:block>
