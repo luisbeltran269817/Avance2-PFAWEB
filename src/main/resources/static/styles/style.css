@@ -1848,6 +1848,46 @@ body.admin {
     margin: 0 auto 1rem;
 }
 
+.admin-stock-resumen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    background-color: var(--primary-dark);
+}
+
+.admin-stock-dato {
+    text-align: center;
+}
+
+.admin-stock-etiqueta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.admin-stock-numero {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.admin-stock-nuevo {
+    color: var(--accent-dark);
+}
+
+.admin-stock-flecha {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--secondary-dark);
+    color: var(--accent-dark);
+    text-align: center;
+}
+
 /* admin movil */
 @media (min-width: 390px) {
     .admin-bienvenida {
