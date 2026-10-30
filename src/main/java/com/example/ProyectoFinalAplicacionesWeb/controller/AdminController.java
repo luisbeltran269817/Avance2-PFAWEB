@@ -45,4 +45,9 @@ public class AdminController {
         //solo redirige al admin dashboard por ahora
         return "redirect:/admin";
     }
+
+    @GetMapping("/admin/productos/editar")
+    public String editarProducto() {
+        return "editarProducto";
+    }
 }

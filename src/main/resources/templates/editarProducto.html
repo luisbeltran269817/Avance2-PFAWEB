@@ -1,10 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title},~{::main})}">
+    <title>Editar producto - GamerHub</title>
+    <main class="editar-container">
 
-</body>
-</html>
+        <form method="post" th:action="@{/admin/productos/1/guardar}" enctype="application/x-www-form-urlencoded">
+
+            <section class="editar-card">
+                <h1>Editar Producto General</h1>
+
+                <div class="credenciales">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" value="Halo Infinite Steelbook Edition" placeholder="Halo Infinite Steelbook Edition" required minlength="3" maxlength="100">
+                </div>
+
+                <div class="credenciales">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="5" placeholder="Descripción del producto" required minlength="10" maxlength="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</textarea>
+                </div>
+
+                <div class="credenciales">
+                    <label for="idCategoria">Categoría</label>
+                    <select id="idCategoria" name="idCategoria" required>
+                        <option value="1" selected>Shooter</option>
+                        <option value="2">Aventura</option>
+                        <option value="3">RPG</option>
+                    </select>
+                </div>
+
+                <div class="editar-imagenes">
+                    <p class="editar-etiqueta">Imágenes</p>
+
+                    <div class="editar-imagen">
+                        <img th:src="@{/imgs/haloinfinite.jpeg}" alt="Imagen 1 del producto">
+                        <div class="editar-imagen-datos">
+                            <label for="url0">URL:</label>
+                            <input type="text" id="url0" name="url" value="www.ejemplodeurl.com" placeholder="www.ejemplodeurl.com" required>
+
+                            <label for="principal0">Principal:</label>
+                            <input type="radio" id="principal0" name="imagenPrincipal" value="0" checked>
+
+                            <label for="orden0">Orden:</label>
+                            <input type="number" id="orden0" name="orden" value="1" min="1" required>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="editar-card">
+                <h2>Editar Precio de Variante</h2>
+                <p>Plataforma: <span>Xbox Series X/S</span></p>
+
+                <input type="hidden" name="idVariante" value="1">
+
+                <div class="credenciales">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" name="precio" value="89.98" placeholder="89.98" step="0.01" min="0" required>
+                </div>
+            </section>
+
+            <div class="editar-acciones">
+                <button type="submit" class="btn-primary">Confirmar</button>
+                <a th:href="@{/admin}" class="btn-cancelar">Cancelar / Volver</a>
+            </div>
+        </form>
+    </main>
+</th:block>

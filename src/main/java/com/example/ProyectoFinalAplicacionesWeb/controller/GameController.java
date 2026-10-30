@@ -60,4 +60,6 @@ public class GameController {
     public String verProducto(){
         return "verProducto";
     }
+
+
 }

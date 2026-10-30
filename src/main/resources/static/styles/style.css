@@ -2395,6 +2395,175 @@ body.admin {
     }
 }
 
+/*estilos editar producto admin*/
+.editar-container{
+    flex-grow: 1;
+    background-color: var(--primary-dark);
+    color: #dae2fd;
+}
+
+.editar-card{
+    margin-bottom: 16px;
+    padding: 24px 20px;
+    background-color: var(--secondary-dark);
+
+    h1,
+    h2{
+        margin-bottom: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: -0.6px;
+    }
+
+    h2 + p{
+        margin-top: 8px;
+        font-size: 1rem;
+    }
+}
+
+/*campos*/
+.editar-card .credenciales{
+    margin-top: 20px;
+}
+
+.editar-card .credenciales label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.editar-card input[type="text"],
+.editar-card input[type="number"],
+.editar-card textarea,
+.editar-card select{
+    width: 100%;
+    margin-bottom: 0;
+    padding: 10px 16px;
+    color: #dae2fd;
+    background-color: var(--tertiary-dark);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.editar-card input[type="text"],
+.editar-card input[type="number"],
+.editar-card select{
+    height: 44px;
+}
+
+.editar-card textarea{
+    resize: vertical;
+}
+
+.editar-card input:focus,
+.editar-card textarea:focus,
+.editar-card select:focus{
+    outline: none;
+    border-color: var(--accent-dark);
+}
+
+/*imagenes*/
+.editar-etiqueta{
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.editar-imagen{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--tertiary-dark);
+    border-radius: 8px;
+
+    img{
+        width: 104px;
+        height: 135px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+}
+
+.editar-imagen-datos{
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px 10px;
+    align-items: center;
+    align-content: start;
+
+    label{
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    input[type="text"],
+    input[type="number"]{
+        height: 32px;
+        padding: 4px 10px;
+        background-color: var(--secondary-dark);
+        font-size: 0.875rem;
+    }
+
+    input[type="number"]{
+        width: 60px;
+    }
+
+    input[type="radio"]{
+        appearance: none;
+        justify-self: start;
+        width: 24px;
+        height: 24px;
+        background-color: var(--secondary-dark);
+        border: 1px solid var(--accent-dark);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked{
+        background-color: #298532;
+    }
+}
+
+/*botones*/
+.editar-acciones{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 24px;
+    background-color: var(--tertiary-dark);
+    border-radius: 12px 12px 0 0;
+
+    .btn-primary{
+        height: 44px;
+        margin-top: 0;
+        padding: 0 32px;
+        color: #00424f;
+        border-radius: 8px;
+        font-size: 0.875rem;
+    }
+}
+
+.btn-cancelar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    background-color: var(--secondary-dark);
+    color: #dae2fd;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 /*estilos añadir variante a producto admin*/
 
 
