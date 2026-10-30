@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Seleccionar variante producto</title>
+    <main class="admin-container">
+        <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Seleccione un producto</h1>
 
-</body>
-</html>
+<!--        por ahora no busca, redirige a la misma pagina-->
+        <form method="get" action="/admin/variantes/seleccionar" class="admin-busqueda">
+            <img src="/imgs/lupaBuscar.png" alt="imagen de una lupa">
+            <input type="search" id="buscar" name="buscar" placeholder="Buscar por nombre">
+        </form>
+
+        <div class="producto-admin-grid">
+            <div class="producto-admin-imagen"><img src="/imgs/haloinfinite.jpeg" alt = "producto"></div>
+            <div class="producto-admin-nombre">Halo Infinite: Steelbook Edition</div>
+            <div class="producto-admin-categoria">Shooter</div>
+
+            <a th:href="@{/admin/variantes/nuevo}" class="producto-admin-btn">Seleccionar producto</a>
+        </div>
+
+
+
+    </main>
+</th:block>

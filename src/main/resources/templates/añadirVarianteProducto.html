@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Crear variante producto</title>
+    <main class="admin-container">
+        <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Añadir variante</h1>
 
-</body>
-</html>
+
+        <form class="nuevoProductoForm" th:action="@{/admin/variantes/guardarVariante}" method="post">
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="plataforma">Plataforma</label>
+                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="plataforma" name="plataforma" required>
+                    <option value="" selected>--Elegir plataforma--</option>
+                    <option value="xbox">Xbox</option>
+                    <option value="playstation">PlayStation</option>
+                    <option value="switch">Nintendo Switch</option>
+                    <option value="pc">PC</option>
+                </select>
+            </div>
+
+            <div class = "campoNuevoProductoForm">
+            <label class="labelNuevoProductoForm" for="precio">Precio:</label>
+            <input
+                    class="inputNuevoProductoForm"
+                    type="number"
+                    id="precio"
+                    name="precio"
+                    placeholder="Precio en dolares, sin $"
+                    min="1"
+                    required
+            >
+            </div>
+
+            <div class = "campoNuevoProductoForm">
+            <label class="labelNuevoProductoForm" for="stock">Stock inicial:</label>
+            <input
+                    class="inputNuevoProductoForm"
+                    type="number"
+                    id="stock"
+                    name="stock"
+                    placeholder="Introduzca un numero"
+                    min="1"
+                    required
+            >
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="activo">Activo</label>
+                <input style="height: 3rem" type="checkbox" id="activo" class="toggle" checked>
+
+            </div>
+
+<!--            le puse margen solo aqui para que se vaya hasta abajo de la pantalla-->
+<!--            porque en esta pantalla no hay sufieciente contenido para empujarlo-->
+            <div class="botonesAdminConfirmarCancelar" style="margin-top: 9.5rem">
+                <button type="submit" class="btn-primary">Confirmar</button>
+                <button type="button" class="btn-secundario">Cancelar / Volver</button>
+            </div>
+
+        </form>
+    </main>
+</th:block>

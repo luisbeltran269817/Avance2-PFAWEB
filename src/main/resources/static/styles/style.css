@@ -108,6 +108,7 @@ body.conBarras{
     padding: 0 1rem;
     flex-grow: 1;
     width: 100%;
+    color: white;
 }
 
 
@@ -1859,5 +1860,738 @@ body.admin {
         flex-direction: column;
     }
 }
+
+/*estilos de ordenes, añadidos de nuevo porque alguien los borro*/
+/*estilos de ordenes*/
+.cabecera-ordenes{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color:white;
+    font-family: "Space Grotesk";
+
+    img{
+        width: 5.5rem;
+        height: 3.5rem;
+        margin-top: 0.7rem;
+    }
+}
+
+.filtros-pedidos{
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 10px;
+    white-space: nowrap;
+    scrollbar-width: thin;
+
+    /*etoy heredando propiadaes del primario, pero lo ajusto para que se vean los filtros bien*/
+    /*y asi tampoco afecto al primario en otras paginas*/
+    .btn-primary{
+        display: flex;
+        align-items: center;
+        font-size: 2.7rem;
+        height: 3rem;
+    }
+}
+
+.card-ordenes{
+    background-color: var(--secondary-dark);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    .orden-primerinfo{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        align-items: center;
+
+        .orden-folio{
+            grid-column: 1/2;
+            grid-row: 1/2;
+            font-size: 3.5rem;
+        }
+
+        .orden-estado{
+            grid-column: 2/3;
+            grid-row: 1/3;
+
+            max-height: 4rem;
+            max-width: 18rem;
+            background-color: var(--accent-dark);
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+            border-radius: 40px;
+            color: var(--primary-dark)
+        }
+
+        .orden-fecha{
+            grid-column: 1/2;
+            grid-row: 2/3;
+            font-size: 2.5rem;
+        }
+
+        .detallesNumGuia{
+            grid-column: 1/3;
+            grid-row:3/4;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+
+            .img-numGuia{
+                width:3.5rem;
+                height: 3.5rem;
+            }
+            .orden-numeroGuia{
+                font-size: 2.5rem;
+            }
+        }
+    }
+
+    h2{
+        color: var(--accent-dark)
+    }
+}
+
+.card-ordenes summary{
+    font-size: 2.5rem;
+    cursor: pointer;
+    background-color: var(--primary-dark);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.detalles-ordenes{
+    height: 20rem;
+    padding: 15px;
+    margin-top: 10px;
+    gap: 15px;
+    background-color: var(--primary-dark);
+    border-radius: 8px;
+
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    .detalleorden-card-imagen{
+        display: flex;
+        grid-column: 1/3;
+        grid-row:1/-1;
+        overflow: hidden;
+        img{
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+
+    .detalleorden-card-nombre{
+        grid-column: 3/-1;
+        grid-row: 1/2;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .detalleorden-card-plataforma{
+        grid-column: 3/-1;
+        grid-row: 2/3;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .detalleorden-card-cantidad{
+        grid-column: 3/5;
+        grid-row: 3/4;
+        font-size: 2rem;
+    }
+
+    .detalleorden-card-precio{
+        grid-column: 5/6;
+        grid-row: 3/4;
+        font-size: 2rem;
+        font-weight: bold;
+        color:var(--accent-dark);
+    }
+
+}
+
+/*estilos que añadio kevin pero alguien los elimino*/
+/* componentes reutilizables*/
+
+/*contenedor con fondo y bordes redondeados*/
+.tarjeta {
+    background-color: var(--secondary-dark);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+/*checkbox de interruptor */
+.toggle {
+    appearance: none;
+    width: 90px;
+    height: 48px;
+    border-radius: 999px;
+    background-color:#475569;
+    position: relative;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.toggle::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color:
+            #FFFFFF;
+    transition: left 0.3s ease;
+}
+
+.toggle:checked {
+    background-color: var(--accent-dark);
+}
+
+.toggle:checked::before {
+    left: 48px;
+    background-color: var(--primary-dark);
+}
+
+/* perfil*/
+.perfil {
+    background-color: var(--primary-dark);
+    color:
+            #FFFFFF;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.perfil-usuario {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.perfil-usuario img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.perfil-usuario h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0;
+}
+
+.perfil-usuario p {
+    font-size: 2.5rem;
+    color: darkgray;
+}
+
+.perfil-apariencia h2 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.perfil-apariencia > p {
+    font-size: 2.5rem;
+    color: darkgray;
+    margin-bottom: 25px;
+}
+
+.perfil-opcion {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--tertiary-dark);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+
+.perfil-opcion label {
+    flex: 1;
+    cursor: pointer;
+}
+
+.perfil-opcion strong {
+    display: block;
+    font-size: 2.5rem;
+}
+
+.perfil-opcion small {
+    display: block;
+    font-size: 2rem;
+    color: darkgray;
+}
+
+
+/*estilos pantalla añadir producto admin*/
+.nuevoProductoForm {
+    margin: 20px 20px 0px 20px;
+}
+
+    .campoNuevoProductoForm {
+        margin-bottom: 22px;
+    }
+
+    .labelNuevoProductoForm {
+        display: block;
+        margin: 0 0 8px 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .inputNuevoProductoForm {
+        width: 100%;
+        padding: 12px 14px;
+        background: var(--tertiary-dark);
+        border: 1px solid transparent;
+        border-radius: 10px;
+        font-size: 1rem;
+        color: white;
+    }
+
+    .textareaNuevoProductoForm {
+        height: 130px;
+        resize: none;
+        color: white;
+    }
+
+    .selectNuevoProductoForm {
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        padding-right: 40px;
+        color: white;
+    }
+
+    .selectNuevoProductoForm option {
+        background: var(--secondary-dark);
+    }
+
+    .imagenesNuevoProductoForm {
+        border: 0;
+        margin: 0 0 22px;
+        padding: 0;
+        min-width: 0;
+    }
+
+    /*para las imagenes*/
+    .image-card {
+        display: flex;
+        gap: 14px;
+        padding: 14px;
+        background: var(--secondary-dark);
+        border-radius: 10px;
+        margin-bottom: 16px;
+        background-color: var(--tertiary-dark);
+    }
+
+    .image-card__preview {
+        flex: 0 0 38%;
+        max-width: 38%;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        overflow: hidden;
+    }
+
+    .image-card__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        word-break: break-word;
+    }
+
+    .image-card__fields {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px;
+    }
+
+    .image-card__row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.95rem;
+    }
+
+    .image-card__input {
+        flex: 1;
+        min-width: 0;
+        padding: 4px 8px;
+        background: var(--secondary-dark);
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 0.9rem;
+        color: white;
+    }
+
+    .image-card__input--num {
+        flex: 0 0 52px;
+        width: 52px;
+        -moz-appearance: textfield;
+    }
+
+    .image-card__check {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        margin: 0 0 0 4px;
+        background: var(--primary-dark);
+        border: 2px solid green;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .image-card__check:checked {
+        background: green;
+    }
+
+    .image-card__check:focus-visible {
+        outline: 2px solid var(--accent-dark);
+        outline-offset: 2px;
+    }
+
+    /*nota por si alguien ve esto: esta clase la pueden reutilizar en las pantallas de admin con los botones de confirmar y cancelar/volver */
+    .botonesAdminConfirmarCancelar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin: 8px -14px 0;
+        padding: 22px 40px 28px;
+        background: var(--tertiary-dark);
+
+        button{
+            font-size: 1rem;
+            width: 20rem;
+            height: 3rem;
+        }
+
+        .btn-secundario{
+            border: 1px solid white;
+        }
+
+        .btn-secundario:hover {
+            background-color: var(--secondary-dark);
+            color: white;
+        }
+
+    }
+
+/*estilos pantalla seleccionar producto para añadirle variante admin*/
+.admin-container{
+
+    .admin-busqueda{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 10px 15px 20px 15px;
+        padding: 8px 16px;
+        background-color: var(--tertiary-dark);
+        border-radius: 12px;
+        max-height: 2.2rem;
+
+        img{
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        input[type="search"]{
+            flex: 1;
+            min-width: 0;
+            margin-bottom: 0;
+            padding: 10px 0;
+            color: #FFFFFF;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        input[type="search"]:focus{
+            outline: none;
+        }
+    }
+
+    .producto-admin-grid {
+        background-color: var(--primary-dark);
+        height: 15rem;
+        margin: 0px 15px 35px 15px;
+        border-radius: 15px;
+
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+
+        gap: 15px;
+        padding: 20px;
+
+        .producto-admin-imagen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            grid-column: 1/4;
+            grid-row: 1/-1;
+
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+
+        .producto-admin-nombre {
+            grid-column: 4/-1;
+            grid-row: 1/2;
+
+            display: flex;
+            align-items: center;
+
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .producto-admin-categoria {
+            grid-column: 4/-1;
+            grid-row: 2/3;
+
+            display: flex;
+            align-items: center;
+
+            font-weight: bold;
+            color: var(--accent-dark);
+            font-size: 1.2rem;
+        }
+
+        .producto-admin-btn {
+            grid-column: 4/-1;
+            grid-row: 3/-1;
+
+            background-color: var(--accent-dark);
+            color: black;
+
+            width: 100%;
+            height: auto;
+
+            align-self: center;
+
+            padding: 10px;
+            border-radius: 12px;
+            border: none;
+
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-decoration: none;
+
+            transition: all 0.3s ease;
+        }
+
+        .producto-admin-btn:hover {
+            background-color: #FFFFFF;
+            color: black;
+        }
+    }
+}
+
+/*estilos editar producto admin*/
+.editar-container{
+    flex-grow: 1;
+    background-color: var(--primary-dark);
+    color: #dae2fd;
+}
+
+.editar-card{
+    margin-bottom: 16px;
+    padding: 24px 20px;
+    background-color: var(--secondary-dark);
+
+    h1,
+    h2{
+        margin-bottom: 0;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.5rem;
+        letter-spacing: -0.6px;
+    }
+
+    h2 + p{
+        margin-top: 8px;
+        font-size: 1rem;
+    }
+}
+
+/*campos*/
+.editar-card .credenciales{
+    margin-top: 20px;
+}
+
+.editar-card .credenciales label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.editar-card input[type="text"],
+.editar-card input[type="number"],
+.editar-card textarea,
+.editar-card select{
+    width: 100%;
+    margin-bottom: 0;
+    padding: 10px 16px;
+    color: #dae2fd;
+    background-color: var(--tertiary-dark);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.editar-card input[type="text"],
+.editar-card input[type="number"],
+.editar-card select{
+    height: 44px;
+}
+
+.editar-card textarea{
+    resize: vertical;
+}
+
+.editar-card input:focus,
+.editar-card textarea:focus,
+.editar-card select:focus{
+    outline: none;
+    border-color: var(--accent-dark);
+}
+
+/*imagenes*/
+.editar-etiqueta{
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.editar-imagen{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--tertiary-dark);
+    border-radius: 8px;
+
+    img{
+        width: 104px;
+        height: 135px;
+        flex-shrink: 0;
+        border-radius: 4px;
+        object-fit: cover;
+    }
+}
+
+.editar-imagen-datos{
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px 10px;
+    align-items: center;
+    align-content: start;
+
+    label{
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    input[type="text"],
+    input[type="number"]{
+        height: 32px;
+        padding: 4px 10px;
+        background-color: var(--secondary-dark);
+        font-size: 0.875rem;
+    }
+
+    input[type="number"]{
+        width: 60px;
+    }
+
+    input[type="radio"]{
+        appearance: none;
+        justify-self: start;
+        width: 24px;
+        height: 24px;
+        background-color: var(--secondary-dark);
+        border: 1px solid var(--accent-dark);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked{
+        background-color: #298532;
+    }
+}
+
+/*botones*/
+.editar-acciones{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 24px;
+    background-color: var(--tertiary-dark);
+    border-radius: 12px 12px 0 0;
+
+    .btn-primary{
+        height: 44px;
+        margin-top: 0;
+        padding: 0 32px;
+        color: #00424f;
+        border-radius: 8px;
+        font-size: 0.875rem;
+    }
+}
+
+.btn-cancelar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    background-color: var(--secondary-dark);
+    color: #dae2fd;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/*estilos añadir variante a producto admin*/
 
 
