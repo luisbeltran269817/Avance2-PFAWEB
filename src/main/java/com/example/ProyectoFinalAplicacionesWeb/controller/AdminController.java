@@ -3,6 +3,7 @@ package com.example.ProyectoFinalAplicacionesWeb.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class AdminController {
@@ -49,5 +50,23 @@ public class AdminController {
     @GetMapping("/admin/productos/editar")
     public String editarProducto() {
         return "editarProducto";
+    }
+
+     @GetMapping("/admin/editarCategoria")
+    public String editarCategorias() {
+        return "editarCategoria";
+    }
+
+    @PostMapping("/admin/editarCategoria")
+    public String guardarCategorias() {
+        //falta ponerle la logica de guardado
+        //solo redirige al admin dashboard por ahora
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/admin/editarCategoria/{id}/eliminar")
+    public String eliminarCategoria(@PathVariable Long id) {
+        //falta ponerle la logica de eliminado
+        return "redirect:/admin/categorias";
     }
 }
