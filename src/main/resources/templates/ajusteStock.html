@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Agregar Stock - Admin GamerHub</title>
+    <main class="admin-container">
+        <form class="admin-formulario">
+            <div class="admin-formulario-contenido">
+                <div>
+                    <h1>Agregar Stock</h1>
+                    <p class="admin-seccion-descripcion">Halo Infinite Steelbook Edition</p>
+                    <p class="admin-producto-sku admin-sku-acento">SKU: MS-HALO-SB-8821</p>
+                </div>
 
-</body>
-</html>
+                <!--stock actual y nuevo-->
+                <div class="admin-stock-resumen">
+                    <div class="admin-stock-dato">
+                        <p class="admin-stock-etiqueta">Stock actual</p>
+                        <p class="admin-stock-numero">3</p>
+                    </div>
+                    <p class="admin-stock-flecha">-></p>
+                    <div class="admin-stock-dato admin-stock-nuevo">
+                        <p class="admin-stock-etiqueta">Nuevo stock</p>
+                        <p class="admin-stock-numero">28</p>
+                    </div>
+                </div>
+
+                <div class="admin-campo">
+                    <label for="cantidad" class="admin-campo-etiqueta">Cantidad de modificación</label>
+                    <div class="admin-contador">
+                        <button type="button">-</button>
+                        <input type="number" id="cantidad" name="cantidad" value="25">
+                        <button type="button">+</button>
+                    </div>
+                </div>
+
+                <div class="admin-campo">
+                    <label for="motivo" class="admin-campo-etiqueta">Motivo del ajuste</label>
+                    <select id="motivo" name="motivo" class="admin-select" required>
+                        <option value="" disabled selected>Stock / Merma / Corrección</option>
+                        <option value="stock">Stock</option>
+                        <option value="merma">Merma</option>
+                        <option value="correccion">Corrección</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="barra-acciones">
+                <button type="submit" class="btn-acento">Confirmar</button>
+                <a th:href="@{/admin}" class="btn-secundario">Cancelar / Volver</a>
+            </div>
+        </form>
+    </main>
+</th:block>
