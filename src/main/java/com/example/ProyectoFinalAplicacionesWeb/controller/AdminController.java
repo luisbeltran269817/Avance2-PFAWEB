@@ -56,7 +56,7 @@ public class AdminController {
     public String ajusteStock() {
         return "ajusteStock";
     }
-}
+
      @GetMapping("/admin/editarCategoria")
     public String editarCategorias() {
         return "editarCategoria";
