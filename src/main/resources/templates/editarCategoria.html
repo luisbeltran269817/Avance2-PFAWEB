@@ -1,10 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
+          xmlns:th="http://www.thymeleaf.org">
+    <title>Editar categorías - Admin GamerHub</title>
+    <main class="admin-container">
+        <form class="editarCategoriasForm" th:action="@{/admin/categorias/guardarCategoria}" method="post">
 
-</body>
-</html>
+            <section class="editarCategoriasContenido">
+                <h1>Editar categorías</h1>
+
+                <!-- al marcar el checkbox (con el label) aparece la tarjeta de nueva categoría -->
+                <input type="checkbox" id="nuevaCategoria" class="nuevaCategoriaToggle">
+                <label for="nuevaCategoria" class="btn-secundario btnAnadirCategoria">Añadir nueva categoría</label>
+
+                <!-- tarjeta para capturar los datos de la nueva categoría -->
+                <article class="categoriaCard categoriaCardNueva">
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="nombreCategoriaNueva">Nombre</label>
+                        <input class="inputNuevoProductoForm" type="text" id="nombreCategoriaNueva"
+                               name="nombreNueva" placeholder="Nombre de la categoría">
+                    </div>
+
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="descripcionCategoriaNueva">Descripción</label>
+                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoriaNueva"
+                                  name="descripcionNueva" placeholder="Descripción de la categoría"></textarea>
+                    </div>
+
+                    <!-- este label desmarca el checkbox, por lo que oculta la tarjeta -->
+                    <label for="nuevaCategoria" class="btnEliminarCategoria">Cancelar nueva categoría</label>
+                </article>
+
+                <!-- categorías existentes -->
+                <article class="categoriaCard">
+                    <input type="hidden" name="idCategoria[]" value="1">
+
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="nombreCategoria1">Nombre</label>
+                        <input class="inputNuevoProductoForm" type="text" id="nombreCategoria1"
+                               name="nombre[]" value="Shooter" required>
+                    </div>
+
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="descripcionCategoria1">Descripción</label>
+                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoria1"
+                                  name="descripcion[]">Juegos de disparos</textarea>
+                    </div>
+
+                    <button type="button" class="btnEliminarCategoria">Eliminar categoría</button>
+                </article>
+
+                <article class="categoriaCard">
+                    <input type="hidden" name="idCategoria[]" value="2">
+
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="nombreCategoria2">Nombre</label>
+                        <input class="inputNuevoProductoForm" type="text" id="nombreCategoria2"
+                               name="nombre[]" value="RPG" required>
+                    </div>
+
+                    <div class="campoNuevoProductoForm">
+                        <label class="labelNuevoProductoForm" for="descripcionCategoria2">Descripción</label>
+                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoria2"
+                                  name="descripcion[]">Juegos de rol</textarea>
+                    </div>
+
+                    <button type="button" class="btnEliminarCategoria">Eliminar categoría</button>
+                </article>
+            </section>
+
+            <div class="barra-acciones">
+                <button type="submit" class="btn-acento">Confirmar</button>
+                <a th:href="@{/admin}" class="btn-secundario">Cancelar / Volver</a>
+            </div>
+
+        </form>
+    </main>
+</th:block>
