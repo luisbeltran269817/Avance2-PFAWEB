@@ -1,5 +1,6 @@
 package com.example.ProyectoFinalAplicacionesWeb.service;
 
+import com.example.ProyectoFinalAplicacionesWeb.dto.ResumenInventarioDTO;
 import com.example.ProyectoFinalAplicacionesWeb.model.VarianteProducto;
 import com.example.ProyectoFinalAplicacionesWeb.repository.VarianteProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,27 @@ public class InventarioService {
         }
         return inventario;
     }
+
+    // cuenta cuántas variantes hay en cada estado de stock
+    public ResumenInventarioDTO calcularResumen(List<VarianteInventarioDTO> inventario) {
+        int criticos = 0;
+        int bajos = 0;
+        int normales = 0;
+
+        for (VarianteInventarioDTO item : inventario) {
+            switch (item.getEstado()) {
+                case "critico":
+                    criticos++;
+                    break;
+                case "bajo":
+                    bajos++;
+                    break;
+                default:
+                    normales++;
+                    break;
+            }
+        }
+        return new ResumenInventarioDTO(inventario.size(), criticos, bajos, normales);
+    }
+
 }
