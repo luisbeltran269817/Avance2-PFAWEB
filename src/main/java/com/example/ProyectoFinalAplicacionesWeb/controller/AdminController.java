@@ -73,10 +73,26 @@ public class AdminController {
     public String editarProducto() {
         return "editarProducto";
     }
-
-    @GetMapping("/admin/stock")
-    public String ajusteStock() {
+    
+    @GetMapping("/admin/stock/{id}")
+    public String ajusteStock(@PathVariable Long id, Model model) {
+        VarianteInventarioDTO variante = inventarioService.obtenerVariante(id);
+        if (variante == null) {
+            return "redirect:/admin";
+        }
+        model.addAttribute("variante", variante);
         return "ajusteStock";
+    }
+
+    @PostMapping("/admin/stock/{id}")
+    public String guardarAjuste(@PathVariable Long id,
+                                @RequestParam("cantidad") int cantidad,
+                                @RequestParam("motivo") String motivo) {
+        boolean registrado = inventarioService.registrarAjuste(id, cantidad, motivo);
+        if (!registrado) {
+            return "redirect:/admin/stock/" + id;
+        }
+        return "redirect:/admin";
     }
 
      @GetMapping("/admin/editarCategoria")
