@@ -4,12 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
 @Controller
 public class AdminController {
 
+    @Autowired
+    private InventarioService inventarioService;
+
     @GetMapping("/admin")
-    public String modoAdministrador() {
+    public String modoAdministrador(Model model) {
+        model.addAttribute("variantes", inventarioService.listarVariantes());
         return "modoAdministrador";
     }
 
