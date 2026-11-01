@@ -164,8 +164,7 @@
                         </div>
                         <div class="admin-producto-botones">
                             <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
-                            <a th:href="@{/admin/stock}" class="btn-acento">+Stock</a>
-                        </div>
+                            <a th:href="@{/admin/stock/{id}(id=${item.id})}" class="btn-acento">+Stock</a>                        </div>
                     </div>
                 </article>
             </div>
