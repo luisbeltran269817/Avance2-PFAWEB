@@ -1,25 +1,25 @@
 <th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main})}"
           xmlns:th="http://www.thymeleaf.org">
-    <title>Agregar Stock - Admin GamerHub</title>
+    <title>Ajustar Stock - Admin GamerHub</title>
     <main class="admin-container">
-        <form class="admin-formulario">
+        <form class="admin-formulario" th:action="@{/admin/stock/{id}(id=${variante.id})}" method="post">
             <div class="admin-formulario-contenido">
                 <div>
-                    <h1>Agregar Stock</h1>
-                    <p class="admin-seccion-descripcion">Halo Infinite Steelbook Edition</p>
-                    <p class="admin-producto-sku admin-sku-acento">SKU: MS-HALO-SB-8821</p>
+                    <h1>Ajustar Stock</h1>
+                    <p class="admin-seccion-descripcion" th:text="${variante.nombre}">Nombre del producto</p>
+                    <p class="admin-producto-sku admin-sku-acento" th:text="|${variante.plataforma} - ID: ${variante.id}|">Plataforma - ID: 0</p>
                 </div>
 
                 <!--stock actual y nuevo-->
                 <div class="admin-stock-resumen">
                     <div class="admin-stock-dato">
                         <p class="admin-stock-etiqueta">Stock actual</p>
-                        <p class="admin-stock-numero">3</p>
+                        <p class="admin-stock-numero" th:text="${variante.stock}">0</p>
                     </div>
                     <p class="admin-stock-flecha">-></p>
                     <div class="admin-stock-dato admin-stock-nuevo">
                         <p class="admin-stock-etiqueta">Nuevo stock</p>
-                        <p class="admin-stock-numero">28</p>
+                        <p class="admin-stock-numero" th:text="${variante.stock + 1}">1</p>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                     <label for="cantidad" class="admin-campo-etiqueta">Cantidad de modificación</label>
                     <div class="admin-contador">
                         <button type="button">-</button>
-                        <input type="number" id="cantidad" name="cantidad" value="25">
+                        <input type="number" id="cantidad" name="cantidad" value="1" required>
                         <button type="button">+</button>
                     </div>
                 </div>
