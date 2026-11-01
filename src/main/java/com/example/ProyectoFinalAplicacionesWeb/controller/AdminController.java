@@ -16,7 +16,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String modoAdministrador(Model model) {
-        model.addAttribute("variantes", inventarioService.listarVariantes());
+        model.addAttribute("inventario", inventarioService.listarInventario());
         return "modoAdministrador";
     }
 

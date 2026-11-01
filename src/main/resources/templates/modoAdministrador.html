@@ -145,20 +145,22 @@
             </div>
 
             <div class="admin-lista">
-                <article class="admin-producto-card" th:each="variante : ${variantes}">
+                <article class="admin-producto-card" th:each="item : ${inventario}">
                     <div class="admin-producto-top">
-                        <h3 th:text="${variante.producto.nombre}">Nombre del producto</h3>
-                        <span class="admin-badge admin-badge-normal">Normal</span>
+                        <h3 th:text="${item.nombre}">Nombre del producto</h3>
+                        <span th:if="${item.estado == 'critico'}" class="admin-badge admin-badge-critico">Crítico</span>
+                        <span th:if="${item.estado == 'bajo'}" class="admin-badge admin-badge-bajo">Bajo</span>
+                        <span th:if="${item.estado == 'normal'}" class="admin-badge admin-badge-normal">Normal</span>
                     </div>
-                    <p class="admin-producto-sku" th:text="|ID: ${variante.id}|">ID: 0</p>
+                    <p class="admin-producto-sku" th:text="|ID: ${item.id}|">ID: 0</p>
                     <div class="admin-etiquetas">
-                        <span class="admin-etiqueta admin-etiqueta-plataforma" th:text="${variante.plataforma}">Plataforma</span>
-                        <span class="admin-etiqueta" th:text="|${variante.stock} en almacén|">0 en almacén</span>
+                        <span class="admin-etiqueta admin-etiqueta-plataforma" th:text="${item.plataforma}">Plataforma</span>
+                        <span class="admin-etiqueta" th:text="|${item.stock} en almacén|">0 en almacén</span>
                     </div>
                     <div class="admin-producto-acciones">
                         <div class="admin-producto-activo">
-                            <input type="checkbox" th:id="|activo-${variante.id}|" th:checked="${variante.activo}">
-                            <label th:for="|activo-${variante.id}|">Catálogo Activo</label>
+                            <input type="checkbox" th:id="|activo-${item.id}|" th:checked="${item.activo}">
+                            <label th:for="|activo-${item.id}|">Catálogo Activo</label>
                         </div>
                         <div class="admin-producto-botones">
                             <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
