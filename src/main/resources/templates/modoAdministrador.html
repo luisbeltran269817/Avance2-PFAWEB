@@ -59,68 +59,30 @@
             </div>
 
             <div class="admin-lista">
-                <div class="admin-pedido-card">
+                <article class="admin-pedido-card" th:each="pedido : ${pedidos}">
                     <div class="admin-pedido-top">
-                        <h3>#GH-8942 <span class="admin-pedido-hora">Hoy, 14:32</span></h3>
+                        <h3><span th:text="|#${pedido.folio}|">#GH-0000</span> <span class="admin-pedido-hora" th:text="${pedido.fecha}">01/01/2026 00:00</span></h3>
                         <div class="admin-pedido-estado">
-                            <span class="admin-badge admin-badge-pendiente">Pendiente</span>
+                            <span th:if="${pedido.estado == 'pendiente'}" class="admin-badge admin-badge-pendiente">Pendiente</span>
+                            <span th:if="${pedido.estado == 'procesando'}" class="admin-badge admin-badge-procesando">Procesando</span>
+                            <span th:if="${pedido.estado == 'enviado'}" class="admin-badge admin-badge-normal">Enviado</span>
+                            <span th:if="${pedido.estado == 'entregado'}" class="admin-badge admin-badge-normal">Entregado</span>
+                            <span th:if="${pedido.estado == 'cancelado'}" class="admin-badge admin-badge-critico">Cancelado</span>
                             <a href="#">Cambiar Estado</a>
                         </div>
                     </div>
                     <div>
-                        <p>Kevin Mendoza</p>
-                        <p class="admin-pedido-contacto">mendoza@email.com</p>
+                        <p th:text="${pedido.cliente}">Cliente</p>
+                        <p class="admin-pedido-contacto" th:text="${pedido.correo}">correo@email.com</p>
                     </div>
                     <div class="admin-pedido-producto">
                         <div>
-                            <p>Elden Ring: Erdtree Collector's Ed.</p>
-                            <p class="admin-pedido-contacto">1 unidad</p>
+                            <p th:text="${pedido.producto}">Producto</p>
+                            <p class="admin-pedido-contacto" th:text="${pedido.unidades == 1} ? '1 unidad' : |${pedido.unidades} unidades|">1 unidad</p>
                         </div>
-                        <span class="admin-pedido-precio">$249.99</span>
+                        <span class="admin-pedido-precio" th:text="'$' + ${pedido.total}">$0.00</span>
                     </div>
-                </div>
-
-                <div class="admin-pedido-card">
-                    <div class="admin-pedido-top">
-                        <h3>#GH-8941 <span class="admin-pedido-hora">Hoy, 13:05</span></h3>
-                        <div class="admin-pedido-estado">
-                            <span class="admin-badge admin-badge-procesando">Procesando</span>
-                            <a href="#">Cambiar Estado</a>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Ana López</p>
-                        <p class="admin-pedido-contacto">ana.lopez@email.com</p>
-                    </div>
-                    <div class="admin-pedido-producto">
-                        <div>
-                            <p>Zelda: Tears of the Kingdom</p>
-                            <p class="admin-pedido-contacto">2 unidades</p>
-                        </div>
-                        <span class="admin-pedido-precio">$139.98</span>
-                    </div>
-                </div>
-
-                <div class="admin-pedido-card">
-                    <div class="admin-pedido-top">
-                        <h3>#GH-8939 <span class="admin-pedido-hora">Hoy, 11:47</span></h3>
-                        <div class="admin-pedido-estado">
-                            <span class="admin-badge admin-badge-pendiente">Pendiente</span>
-                            <a href="#">Cambiar Estado</a>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Jorge Ruiz</p>
-                        <p class="admin-pedido-contacto">j@email.com</p>
-                    </div>
-                    <div class="admin-pedido-producto">
-                        <div>
-                            <p>Halo Infinite Steelbook Edition</p>
-                            <p class="admin-pedido-contacto">1 unidad</p>
-                        </div>
-                        <span class="admin-pedido-precio">$89.98</span>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
 
@@ -164,7 +126,8 @@
                         </div>
                         <div class="admin-producto-botones">
                             <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
-                            <a th:href="@{/admin/stock/{id}(id=${item.id})}" class="btn-acento">+Stock</a>                        </div>
+                            <a th:href="@{/admin/stock/{id}(id=${item.id})}" class="btn-acento">+Stock</a>
+                        </div>
                     </div>
                 </article>
             </div>

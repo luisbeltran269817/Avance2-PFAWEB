@@ -11,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import com.example.ProyectoFinalAplicacionesWeb.dto.VarianteInventarioDTO;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.example.ProyectoFinalAplicacionesWeb.service.OrdenService;
 
 import java.util.List;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private OrdenService ordenService;
 
     @Autowired
     private InventarioService inventarioService;
@@ -28,6 +32,7 @@ public class AdminController {
         List<VarianteInventarioDTO> inventario = inventarioService.listarInventario();
         model.addAttribute("inventario", inventario);
         model.addAttribute("resumen", inventarioService.calcularResumen(inventario));
+        model.addAttribute("pedidos", ordenService.listarPedidos());
         return "modoAdministrador";
     }
 
@@ -73,7 +78,7 @@ public class AdminController {
     public String editarProducto() {
         return "editarProducto";
     }
-    
+
     @GetMapping("/admin/stock/{id}")
     public String ajusteStock(@PathVariable Long id, Model model) {
         VarianteInventarioDTO variante = inventarioService.obtenerVariante(id);
