@@ -1,5 +1,7 @@
 package com.example.ProyectoFinalAplicacionesWeb.controller;
 
+import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoDTO;
+import com.example.ProyectoFinalAplicacionesWeb.service.ProductoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,8 @@ import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import com.example.ProyectoFinalAplicacionesWeb.dto.VarianteInventarioDTO;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @Controller
@@ -15,6 +19,9 @@ public class AdminController {
 
     @Autowired
     private InventarioService inventarioService;
+
+    @Autowired
+    private ProductoService productoService;
 
     @GetMapping("/admin")
     public String modoAdministrador(Model model) {
@@ -42,12 +49,16 @@ public class AdminController {
     }
 
     @GetMapping("/admin/variantes/seleccionar")
-    public String seleccionarVarianteProducto(){
+    public String seleccionarVarianteProducto(@RequestParam(required = false) String buscar, Model model) {
+        List<ProductoDTO> productos = productoService.buscarProductos(buscar);
+        model.addAttribute("productos", productos);
+        model.addAttribute("buscar", buscar);
         return "seleccionarVarianteProducto";
     }
 
     @GetMapping("/admin/variantes/nuevo")
-    public String crearVarianteProducto(){
+    //el id del producto lo recibe de la pantalla anterior, aun no pongo logica
+    public String crearVarianteProducto(@RequestParam Long productoId, Model model) {
         return "añadirVarianteProducto";
     }
 

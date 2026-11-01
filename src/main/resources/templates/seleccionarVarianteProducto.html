@@ -4,21 +4,33 @@
     <main class="admin-container">
         <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Seleccione un producto</h1>
 
-<!--        por ahora no busca, redirige a la misma pagina-->
-        <form method="get" action="/admin/variantes/seleccionar" class="admin-busqueda">
-            <img src="/imgs/lupaBuscar.png" alt="imagen de una lupa">
-            <input type="search" id="buscar" name="buscar" placeholder="Buscar por nombre">
-        </form>
+<!--        barra de busqueda que ahora si funciona-->
+            <form method="get" th:action="@{/admin/variantes/seleccionar}" class="admin-busqueda">
+                <img src="/imgs/lupaBuscar.png" alt="imagen de una lupa">
+                <input type="search" id="buscar" name="buscar" placeholder="Buscar por nombre" th:value="${buscar}">
+            </form>
 
-        <div class="producto-admin-grid">
-            <div class="producto-admin-imagen"><img src="/imgs/haloinfinite.jpeg" alt = "producto"></div>
-            <div class="producto-admin-nombre">Halo Infinite: Steelbook Edition</div>
-            <div class="producto-admin-categoria">Shooter</div>
 
-            <a th:href="@{/admin/variantes/nuevo}" class="producto-admin-btn">Seleccionar producto</a>
+<!--        tarjetas para mostrar cada producto pero ahora son dinamicos-->
+        <div class="producto-admin-grid"
+             th:each="producto : ${productos}"
+             th:with="imgPrincipal=${#lists.isEmpty(producto.imagenes) ? null : (producto.imagenes.^[principal == true] ?: producto.imagenes[0])}">
+
+            <div class="producto-admin-imagen">
+                <img th:src="${imgPrincipal != null ? imgPrincipal.url : '/imgs/sin-imagen.png'}"
+                     th:alt="${producto.nombre}"
+                     alt="producto">
+            </div>
+
+            <div class="producto-admin-nombre" th:text="${producto.nombre}">Nombre del producto</div>
+
+            <div class="producto-admin-categoria"
+                 th:text="${producto.categoria?.nombre} ?: 'Sin categoría'">Categoría</div>
+
+            <a th:href="@{/admin/variantes/nuevo(productoId=${producto.id})}"
+               class="producto-admin-btn">Seleccionar producto</a>
         </div>
 
-
-
+        <p th:if="${#lists.isEmpty(productos)}">No se encontraron productos</p>
     </main>
 </th:block>
