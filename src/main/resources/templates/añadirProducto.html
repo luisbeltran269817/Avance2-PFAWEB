@@ -3,82 +3,78 @@
     <title>Añadir producto</title>
     <main class = "admin-container">
         <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Añadir nuevo producto</h1>
-
-<!--        poner en el action algo para guardar el producto ej: (th:object="${producto}")-->
-        <form class="nuevoProductoForm" th:action="@{/admin/productos/guardarProducto}" method="post">
+        <form class="nuevoProductoForm" th:action="@{/admin/productos/guardarProducto}"
+              th:object="${productoForm}" method="post">
 
             <div class="campoNuevoProductoForm">
                 <label class="labelNuevoProductoForm" for="nombre">Nombre</label>
-                <input style="font-size: 1rem; background-color: var(--tertiary-dark)" class="inputNuevoProductoForm" type="text" id="nombre" name="nombre" placeholder="Escriba un nombre..." required>
+                <input style="font-size: 1rem; background-color: var(--tertiary-dark)"
+                       class="inputNuevoProductoForm" type="text" id="nombre"
+                       th:field="*{nombre}" placeholder="Escriba un nombre..." required>
             </div>
 
             <div class="campoNuevoProductoForm">
                 <label class="labelNuevoProductoForm" for="descripcion">Descripción</label>
-                <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcion" name="descripcion" placeholder="Escriba una descripción..." required></textarea>
+                <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcion"
+                          th:field="*{descripcion}" placeholder="Escriba una descripción..." required></textarea>
             </div>
 
             <div class="campoNuevoProductoForm">
                 <label class="labelNuevoProductoForm" for="categoria">Categoría</label>
-                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="categoria" name="categoria" required>
-                    <option value="" selected>--Seleccione una categoría--</option>
-                    <option value="shooter">Shooter</option>
-                    <option value="rpg">RPG</option>
-                    <option value="construccion">Construcción</option>
+                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="categoria"
+                        th:field="*{categoriaId}" required>
+                    <option value="">--Seleccione una categoría--</option>
+                    <option th:each="cat : ${categorias}"
+                            th:value="${cat.id}"
+                            th:text="${cat.nombre}">Categoría</option>
                 </select>
             </div>
 
             <fieldset class="imagenesNuevoProductoForm">
                 <label class="labelNuevoProductoForm">Imágenes</label>
 
-                <div class="image-card">
+                <div class="image-card" th:each="img, stat : *{imagenes}">
                     <div class="image-card__preview">
-                        <img src="" alt="imagen del producto" class="image-card__img">
+                        <img th:src="${!#strings.isEmpty(img.url)} ? ${img.url}"
+                             alt="imagen del producto" class="image-card__img">
                     </div>
 
                     <div class="image-card__fields">
                         <div class="image-card__row">
-                            <label for="imagen-url-0">URL:</label>
-                            <input
-                                    class="image-card__input"
-                                    type="url"
-                                    id="imagen-url-0"
-                                    name="imagenes[0].url"
-                                    placeholder="poner una URL..."
-                            >
+                            <label th:for="${'imagen-url-' + stat.index}">URL:</label>
+                            <input class="image-card__input" type="url"
+                                   th:id="${'imagen-url-' + stat.index}"
+                                   th:field="*{imagenes[__${stat.index}__].url}"
+                                   placeholder="poner una URL..." required>
                         </div>
 
                         <div class="image-card__row">
-                            <label for="imagen-principal-0">Principal:</label>
-                            <input
-                                    class="image-card__check"
-                                    type="checkbox"
-                                    id="imagen-principal-0"
-                                    name="imagenes[0].principal"
-                            >
+                            <label th:for="${'imagen-principal-' + stat.index}">Principal:</label>
+                            <input class="image-card__check" type="checkbox"
+                                   th:id="${'imagen-principal-' + stat.index}"
+                                   th:field="*{imagenes[__${stat.index}__].principal}">
                         </div>
 
                         <div class="image-card__row">
-                            <label for="imagen-orden-0">Orden:</label>
-                            <input
-                                    class="image-card__input image-card__input--num"
-                                    type="number"
-                                    id="imagen-orden-0"
-                                    name="imagenes[0].orden"
-                                    placeholder="num"
-                                    min="1"
-                            >
+                            <label th:for="${'imagen-orden-' + stat.index}">Orden:</label>
+                            <input class="image-card__input image-card__input--num" type="number"
+                                   th:id="${'imagen-orden-' + stat.index}"
+                                   th:field="*{imagenes[__${stat.index}__].orden}"
+                                   placeholder="num" min="1" required>
                         </div>
                     </div>
                 </div>
 
-                <button type="button" class="btn-secundario">Añadir nueva imagen</button>
+                <button type="submit" class="btn-secundario" formnovalidate
+                        th:formaction="@{/admin/productos/agregarImagen}">
+                    Añadir nueva imagen
+                </button>
             </fieldset>
 
             <div class="botonesAdminConfirmarCancelar">
                 <button type="submit" class="btn-primary">Confirmar</button>
-                <button type="button" class="btn-secundario">Cancelar / Volver</button>
+                <a style="width: 105%" th:href="@{/admin}" class="btn-secundario">Cancelar / Volver</a>
             </div>
-
         </form>
     </main>
 </th:block>

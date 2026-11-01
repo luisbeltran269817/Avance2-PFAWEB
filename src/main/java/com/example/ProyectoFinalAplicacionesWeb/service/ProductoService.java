@@ -3,10 +3,14 @@ package com.example.ProyectoFinalAplicacionesWeb.service;
 import com.example.ProyectoFinalAplicacionesWeb.dto.CategoriaDTO;
 import com.example.ProyectoFinalAplicacionesWeb.dto.ImagenProductoDTO;
 import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoDTO;
+import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoFormDTO;
 import com.example.ProyectoFinalAplicacionesWeb.model.Categoria;
 import com.example.ProyectoFinalAplicacionesWeb.model.ImagenProducto;
 import com.example.ProyectoFinalAplicacionesWeb.model.Producto;
+import com.example.ProyectoFinalAplicacionesWeb.repository.CategoriaRepository;
 import com.example.ProyectoFinalAplicacionesWeb.repository.ProductoRepository;
+
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +24,8 @@ public class ProductoService {
     @Autowired
     ProductoRepository productoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
     /**
      * consigue todos los productos con repository, despues los convierte a dto
      * @return lista de todos los productos como DTO
@@ -45,6 +51,52 @@ public class ProductoService {
         return productoRepository.findByNombreContainingIgnoreCase(nombre.trim()).stream()
                 .map(this::convertirADTO)
                 .toList();
+    }
+
+    @Transactional
+    public Producto guardarProducto(ProductoFormDTO form) {
+        if (form.getCategoriaId() == null) {
+            throw new IllegalArgumentException("Debe estar una categoria");
+        }
+        Categoria categoria = categoriaRepository.findById(form.getCategoriaId()).orElseThrow(() -> new IllegalArgumentException("La categoría seleccionada no existe"));
+
+        //si una tarjeta de imagen no venia con url se descarta
+        List<ImagenProductoDTO> validas = form.getImagenes().stream()
+                .filter(i -> i.getUrl() != null && !i.getUrl().isBlank())
+                .toList();
+
+        if (validas.isEmpty()) {
+            throw new IllegalArgumentException("El producto debe tener al menos una imagen");
+        }
+
+        //solo debe haber una imagen con principal true
+        //se deja la primera marcada de la lista o si no hay marcada se marca la primera de la lista
+        int indicePrincipal = 0;
+        for (int i = 0; i < validas.size(); i++) {
+            if (Boolean.TRUE.equals(validas.get(i).getPrincipal())) {
+                indicePrincipal = i;
+                break;
+            }
+        }
+
+        List<ImagenProducto> imagenes = new ArrayList<>();
+        for (int i = 0; i < validas.size(); i++) {
+            ImagenProductoDTO dto = validas.get(i);
+            imagenes.add(ImagenProducto.builder()
+                    .url(dto.getUrl().trim())
+                    .orden(dto.getOrden() != null ? dto.getOrden() : i + 1)
+                    .principal(i == indicePrincipal)
+                    .build());
+        }
+
+        Producto producto = Producto.builder()
+                .nombre(form.getNombre().trim())
+                .descripcion(form.getDescripcion())
+                .categoria(categoria)
+                .imagenes(imagenes)
+                .build();
+        
+        return productoRepository.save(producto);
     }
 
     //metodo auxiliar que convierte un producto en productodto

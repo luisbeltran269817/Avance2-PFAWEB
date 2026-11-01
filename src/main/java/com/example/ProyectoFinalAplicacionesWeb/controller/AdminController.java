@@ -1,16 +1,16 @@
 package com.example.ProyectoFinalAplicacionesWeb.controller;
 
+import com.example.ProyectoFinalAplicacionesWeb.dto.ImagenProductoDTO;
 import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoDTO;
+import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoFormDTO;
+import com.example.ProyectoFinalAplicacionesWeb.service.CategoriaService;
 import com.example.ProyectoFinalAplicacionesWeb.service.ProductoService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import com.example.ProyectoFinalAplicacionesWeb.dto.VarianteInventarioDTO;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.example.ProyectoFinalAplicacionesWeb.service.OrdenService;
 
 import java.util.List;
@@ -27,6 +27,9 @@ public class AdminController {
     @Autowired
     private ProductoService productoService;
 
+    @Autowired
+    private CategoriaService categoriaService;
+
     @GetMapping("/admin")
     public String modoAdministrador(Model model) {
         List<VarianteInventarioDTO> inventario = inventarioService.listarInventario();
@@ -42,14 +45,24 @@ public class AdminController {
     }
 
     @GetMapping("/admin/productos/nuevo")
-    public String nuevoProducto() {
+    public String nuevoProducto(Model model) {
+        ProductoFormDTO form = new ProductoFormDTO();
+        form.getImagenes().add(new ImagenProductoDTO());
+        model.addAttribute("productoForm", form);
+        model.addAttribute("categorias", categoriaService.listarCategorias());
+        return "añadirProducto";
+    }
+
+    @PostMapping("/admin/productos/agregarImagen")
+    public String agregarImagen(@ModelAttribute("productoForm") ProductoFormDTO form, Model model) {
+        form.getImagenes().add(new ImagenProductoDTO());
+        model.addAttribute("categorias", categoriaService.listarCategorias());
         return "añadirProducto";
     }
 
     @PostMapping("/admin/productos/guardarProducto")
-    public String guardarProducto() {
-        //falta ponerle la logica de guardado
-        //solo redirige al admin dashboard por ahora
+    public String guardarProducto(@ModelAttribute("productoForm") ProductoFormDTO form, Model model) {
+        productoService.guardarProducto(form);
         return "redirect:/admin";
     }
 

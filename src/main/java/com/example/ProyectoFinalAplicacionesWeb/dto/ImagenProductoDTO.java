@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class ImagenProductoDTO {
     private Long id;
     private String url;
-    private int orden;
+    private Integer orden;
     private Boolean principal;
 }
