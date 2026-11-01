@@ -27,11 +27,11 @@
             </div>
             <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Títulos Físicos</p>
-                <p class="admin-resumen-valor">184</p>
+                <p class="admin-resumen-valor" th:text="${resumen.total}">184</p>
             </div>
             <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Alerta Stock</p>
-                <p class="admin-resumen-valor">6 <span class="admin-resumen-unidad">críticos</span></p>
+                <p class="admin-resumen-valor"><span th:text="${resumen.criticos}">6</span> <span class="admin-resumen-unidad">críticos</span></p>
             </div>
         </div>
 
@@ -129,7 +129,7 @@
         <div class="admin-seccion">
             <div>
                 <h2>Inventario en Bodega</h2>
-                <p class="admin-seccion-descripcion">184 items físicos catalogados y clasificados.</p>
+                <p class="admin-seccion-descripcion" th:text="|${resumen.total} items físicos catalogados y clasificados.|">184 items físicos catalogados y clasificados.</p>
             </div>
 
             <form class="admin-buscador">
@@ -138,10 +138,10 @@
             </form>
 
             <div class="admin-filtros">
-                <button type="button" class="admin-chip activo">Todos (184)</button>
-                <button type="button" class="admin-chip admin-chip-critico">Crítico (6)</button>
-                <button type="button" class="admin-chip admin-chip-bajo">Bajo (14)</button>
-                <button type="button" class="admin-chip">Normal (122)</button>
+                <button type="button" class="admin-chip activo" th:text="|Todos (${resumen.total})|">Todos (184)</button>
+                <button type="button" class="admin-chip admin-chip-critico" th:text="|Crítico (${resumen.criticos})|">Crítico (6)</button>
+                <button type="button" class="admin-chip admin-chip-bajo" th:text="|Bajo (${resumen.bajos})|">Bajo (14)</button>
+                <button type="button" class="admin-chip" th:text="|Normal (${resumen.normales})|">Normal (122)</button>
             </div>
 
             <div class="admin-lista">

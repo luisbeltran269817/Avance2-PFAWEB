@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import com.example.ProyectoFinalAplicacionesWeb.dto.VarianteInventarioDTO;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -16,7 +18,9 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String modoAdministrador(Model model) {
-        model.addAttribute("inventario", inventarioService.listarInventario());
+        List<VarianteInventarioDTO> inventario = inventarioService.listarInventario();
+        model.addAttribute("inventario", inventario);
+        model.addAttribute("resumen", inventarioService.calcularResumen(inventario));
         return "modoAdministrador";
     }
 
