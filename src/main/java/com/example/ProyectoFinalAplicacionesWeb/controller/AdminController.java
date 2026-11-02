@@ -1,8 +1,6 @@
 package com.example.ProyectoFinalAplicacionesWeb.controller;
 
-import com.example.ProyectoFinalAplicacionesWeb.dto.ImagenProductoDTO;
-import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoDTO;
-import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoFormDTO;
+import com.example.ProyectoFinalAplicacionesWeb.dto.*;
 import com.example.ProyectoFinalAplicacionesWeb.service.CategoriaService;
 import com.example.ProyectoFinalAplicacionesWeb.service.ProductoService;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import com.example.ProyectoFinalAplicacionesWeb.dto.VarianteInventarioDTO;
 import com.example.ProyectoFinalAplicacionesWeb.service.OrdenService;
 
 import java.util.List;
@@ -129,5 +126,22 @@ public class AdminController {
     public String eliminarCategoria(@PathVariable Long id) {
         //falta ponerle la logica de eliminado
         return "redirect:/admin/categorias";
+    }
+
+    @GetMapping("/admin/productos/{id}/editar")
+    public String editarProducto(@PathVariable Long id, Model model) {
+        ProductoEdicionDTO productoEdicionDTO = productoService.buscarVarianteProductoPorId(id);
+        if (productoEdicionDTO == null) {
+            return "redirect:/admin";
+        }
+        model.addAttribute("productoEdicion", productoEdicionDTO);
+        model.addAttribute("categorias", categoriaService.listarCategorias());
+        return "editarProducto";
+    }
+
+    @PostMapping("/admin/productos/{id}/editar")
+    public String guardarEdicion(@PathVariable Long id, @ModelAttribute("productoEdicion") ProductoEdicionDTO productoEdicionDTO) {
+        productoService.actualizarProducto(id, productoEdicionDTO);
+        return "redirect:/admin";
     }
 }

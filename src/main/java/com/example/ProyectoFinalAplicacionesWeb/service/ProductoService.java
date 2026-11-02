@@ -1,15 +1,14 @@
 package com.example.ProyectoFinalAplicacionesWeb.service;
 
-import com.example.ProyectoFinalAplicacionesWeb.dto.CategoriaDTO;
-import com.example.ProyectoFinalAplicacionesWeb.dto.ImagenProductoDTO;
-import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoDTO;
-import com.example.ProyectoFinalAplicacionesWeb.dto.ProductoFormDTO;
+import com.example.ProyectoFinalAplicacionesWeb.dto.*;
 import com.example.ProyectoFinalAplicacionesWeb.model.Categoria;
 import com.example.ProyectoFinalAplicacionesWeb.model.ImagenProducto;
 import com.example.ProyectoFinalAplicacionesWeb.model.Producto;
+import com.example.ProyectoFinalAplicacionesWeb.model.VarianteProducto;
 import com.example.ProyectoFinalAplicacionesWeb.repository.CategoriaRepository;
 import com.example.ProyectoFinalAplicacionesWeb.repository.ProductoRepository;
 
+import com.example.ProyectoFinalAplicacionesWeb.repository.VarianteProductoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,10 @@ public class ProductoService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private VarianteProductoRepository varianteProductoRepository;
+
     /**
      * consigue todos los productos con repository, despues los convierte a dto
      * @return lista de todos los productos como DTO
@@ -135,5 +138,75 @@ public class ProductoService {
                 categoria.getNombre(),
                 categoria.getDescripcion()
         );
+    }
+
+    @Transactional
+    public void actualizarProducto(Long id, ProductoEdicionDTO productoEdicionDTO) {
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("El producto no existe"));
+        Categoria categoria = categoriaRepository.findById(productoEdicionDTO.getCategoriaId())
+                .orElseThrow(() -> new IllegalArgumentException("La categoría seleccionada no existe"));
+        VarianteProducto variante = varianteProductoRepository.findById(productoEdicionDTO.getVarianteId())
+                .orElseThrow(() -> new IllegalArgumentException("La variante no existe"));
+
+        //la variante tiene que ser de este producto
+        if (!variante.getProducto().getId().equals(id)) {
+            throw new IllegalArgumentException("La variante no pertenece al producto");
+        }
+
+        producto.setNombre(productoEdicionDTO.getNombre().trim());
+        producto.setDescripcion(productoEdicionDTO.getDescripcion());
+        producto.setCategoria(categoria);
+
+        //solo queda como principal la imagen que eligio el radio
+        for (int i = 0; i < productoEdicionDTO.getImagenes().size(); i++) {
+            ImagenProductoDTO dto = productoEdicionDTO.getImagenes().get(i);
+            for (ImagenProducto imagen : producto.getImagenes()) {
+                if (imagen.getId().equals(dto.getId())) {
+                    imagen.setUrl(dto.getUrl().trim());
+                    imagen.setOrden(dto.getOrden() != null ? dto.getOrden() : i + 1);
+                    imagen.setPrincipal(i == productoEdicionDTO.getImagenPrincipal());
+                }
+            }
+        }
+
+        variante.setPrecio(productoEdicionDTO.getPrecio());
+    }
+
+    public ProductoEdicionDTO buscarVarianteProductoPorId(Long id) {
+        VarianteProducto variante = varianteProductoRepository.findById(id).orElse(null);
+        if (variante == null) {
+            return null;
+        }
+        return convertirAEdicionDTO(variante.getProducto(), variante);
+    }
+
+    //auxiliar que convierte un producto y una variante en el dto del formulario de editar
+    private ProductoEdicionDTO convertirAEdicionDTO(Producto producto, VarianteProducto variante) {
+        List<ImagenProductoDTO> imagenes = new ArrayList<>(producto.getImagenes().stream()
+                .sorted(Comparator.comparingInt(ImagenProducto::getOrden))
+                .map(this::convertirImagenADTO)
+                .toList());
+
+        //se busca en que posicion de la lista esta la imagen principal
+        int indicePrincipal = 0;
+        for (int i = 0; i < imagenes.size(); i++) {
+            if (Boolean.TRUE.equals(imagenes.get(i).getPrincipal())) {
+                indicePrincipal = i;
+                break;
+            }
+        }
+
+        ProductoEdicionDTO dto = new ProductoEdicionDTO();
+        dto.setId(producto.getId());
+        dto.setNombre(producto.getNombre());
+        dto.setDescripcion(producto.getDescripcion());
+        dto.setCategoriaId(producto.getCategoria() != null ? producto.getCategoria().getId() : null);
+        dto.setImagenPrincipal(indicePrincipal);
+        dto.setImagenes(imagenes);
+        dto.setVarianteId(variante.getId());
+        dto.setPlataforma(variante.getPlataforma());
+        dto.setPrecio(variante.getPrecio());
+        return dto;
     }
 }
