@@ -125,7 +125,7 @@
                             <label th:for="|activo-${item.id}|">Catálogo Activo</label>
                         </div>
                         <div class="admin-producto-botones">
-                            <a th:href="@{/admin/productos/editar}" class="btn-secundario">Editar</a>
+                            <a th:href="@{/admin/productos/{id}/editar(id=${item.id})}" class="btn-secundario">Editar</a>
                             <a th:href="@{/admin/stock/{id}(id=${item.id})}" class="btn-acento">+Stock</a>
                         </div>
                     </div>
