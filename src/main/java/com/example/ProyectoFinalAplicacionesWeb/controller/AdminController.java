@@ -1,14 +1,12 @@
 package com.example.ProyectoFinalAplicacionesWeb.controller;
 
 import com.example.ProyectoFinalAplicacionesWeb.dto.*;
-import com.example.ProyectoFinalAplicacionesWeb.service.CategoriaService;
-import com.example.ProyectoFinalAplicacionesWeb.service.ProductoService;
+import com.example.ProyectoFinalAplicacionesWeb.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import com.example.ProyectoFinalAplicacionesWeb.service.InventarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import com.example.ProyectoFinalAplicacionesWeb.service.OrdenService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -26,6 +24,12 @@ public class AdminController {
 
     @Autowired
     private CategoriaService categoriaService;
+
+    @Autowired
+    private IdiomaService idiomaService;
+
+    @Autowired
+    private VarianteProductoService varianteProductoService;
 
     @GetMapping("/admin")
     public String modoAdministrador(Model model) {
@@ -72,16 +76,18 @@ public class AdminController {
     }
 
     @GetMapping("/admin/variantes/nuevo")
-    //el id del producto lo recibe de la pantalla anterior, aun no pongo logica
     public String crearVarianteProducto(@RequestParam Long productoId, Model model) {
+        VarianteFormDTO form = new VarianteFormDTO();
+        form.setProductoId(productoId);
+        model.addAttribute("varianteForm", form);
+        model.addAttribute("idiomas", idiomaService.listarIdiomas());
         return "añadirVarianteProducto";
     }
 
     @PostMapping("/admin/variantes/guardarVariante")
-    public String guardarVariante() {
-        //falta ponerle la logica de guardado
-        //solo redirige al admin dashboard por ahora
-        return "redirect:/admin";
+    public String guardarVariante(@ModelAttribute("varianteForm") VarianteFormDTO form, Model model) {
+            varianteProductoService.guardarVariante(form);
+            return "redirect:/admin";
     }
 
     @GetMapping("/admin/productos/editar")
