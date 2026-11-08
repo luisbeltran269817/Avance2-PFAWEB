@@ -2,6 +2,7 @@ package com.example.ProyectoFinalAplicacionesWeb.controller;
 
 import com.example.ProyectoFinalAplicacionesWeb.dto.UsuarioRegistroDTO;
 import com.example.ProyectoFinalAplicacionesWeb.model.Usuario;
+import com.example.ProyectoFinalAplicacionesWeb.model.Administrador;
 import com.example.ProyectoFinalAplicacionesWeb.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,14 @@ public class AuthController {
 
         Usuario usuario = usuarioService.autenticarUsuario(correo, contrasenia);
 
+        //modificado para validar si el id coincide con el administrador y mandarlo para el dashboard
         if (usuario != null) {
+            boolean esAdmin = usuario instanceof Administrador;
             session.setAttribute("usuario_id", usuario.getId());
+            session.setAttribute("es_admin", esAdmin);
+            if (esAdmin) {
+                return "redirect:/admin";
+            }
             return "redirect:/catalogo";
         }
 
