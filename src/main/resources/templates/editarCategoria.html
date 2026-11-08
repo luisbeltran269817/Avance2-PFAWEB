@@ -2,7 +2,14 @@
           xmlns:th="http://www.thymeleaf.org">
     <title>Editar categorías - Admin GamerHub</title>
     <main class="admin-container">
-        <form class="editarCategoriasForm" th:action="@{/admin/categorias/guardarCategoria}" method="post">
+
+        <!-- mensajes de exito o error que manda el controlador (aqui mismo para no tocar el layout) -->
+        <p th:if="${error}" th:text="${error}" role="alert"
+           style="margin: 1rem 1rem 0; padding: .75rem 1rem; border-radius: 8px; border: 1px solid #CC1C00; background: rgba(204,28,0,.2); color: #FFB4A8; font-size: .875rem; font-weight: 600;"></p>
+        <p th:if="${exito}" th:text="${exito}" role="status"
+           style="margin: 1rem 1rem 0; padding: .75rem 1rem; border-radius: 8px; border: 1px solid #22C55E; background: rgba(34,197,94,.15); color: #86EFAC; font-size: .875rem; font-weight: 600;"></p>
+
+        <form class="editarCategoriasForm" th:object="${categoriasForm}" th:action="@{/admin/editarCategoria}" method="post">
 
             <section class="editarCategoriasContenido">
                 <h1>Editar categorías</h1>
@@ -11,59 +18,47 @@
                 <input type="checkbox" id="nuevaCategoria" class="nuevaCategoriaToggle">
                 <label for="nuevaCategoria" class="btn-secundario btnAnadirCategoria">Añadir nueva categoría</label>
 
-                <!-- tarjeta para capturar los datos de la nueva categoría -->
+                <!-- tarjeta para capturar los datos de la nueva categoría; si el nombre se deja vacío se ignora -->
                 <article class="categoriaCard categoriaCardNueva">
                     <div class="campoNuevoProductoForm">
                         <label class="labelNuevoProductoForm" for="nombreCategoriaNueva">Nombre</label>
                         <input class="inputNuevoProductoForm" type="text" id="nombreCategoriaNueva"
-                               name="nombreNueva" placeholder="Nombre de la categoría">
+                               th:field="*{nueva.nombre}" maxlength="255" placeholder="Nombre de la categoría">
                     </div>
 
                     <div class="campoNuevoProductoForm">
                         <label class="labelNuevoProductoForm" for="descripcionCategoriaNueva">Descripción</label>
                         <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoriaNueva"
-                                  name="descripcionNueva" placeholder="Descripción de la categoría"></textarea>
+                                  th:field="*{nueva.descripcion}" maxlength="1000"
+                                  placeholder="Descripción de la categoría"></textarea>
                     </div>
 
                     <!-- este label desmarca el checkbox, por lo que oculta la tarjeta -->
                     <label for="nuevaCategoria" class="btnEliminarCategoria">Cancelar nueva categoría</label>
                 </article>
 
-                <!-- categorías existentes -->
-                <article class="categoriaCard">
-                    <input type="hidden" name="idCategoria[]" value="1">
+                <!-- categorías existentes, una tarjeta por cada una -->
+                <article class="categoriaCard" th:each="categoria, estado : *{categorias}">
+                    <input type="hidden" th:field="*{categorias[__${estado.index}__].id}">
 
                     <div class="campoNuevoProductoForm">
-                        <label class="labelNuevoProductoForm" for="nombreCategoria1">Nombre</label>
-                        <input class="inputNuevoProductoForm" type="text" id="nombreCategoria1"
-                               name="nombre[]" value="Shooter" required>
+                        <label class="labelNuevoProductoForm" th:for="${'nombreCategoria' + estado.index}">Nombre</label>
+                        <input class="inputNuevoProductoForm" type="text" th:id="${'nombreCategoria' + estado.index}"
+                               th:field="*{categorias[__${estado.index}__].nombre}" maxlength="255" required>
                     </div>
 
                     <div class="campoNuevoProductoForm">
-                        <label class="labelNuevoProductoForm" for="descripcionCategoria1">Descripción</label>
-                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoria1"
-                                  name="descripcion[]">Juegos de disparos</textarea>
+                        <label class="labelNuevoProductoForm" th:for="${'descripcionCategoria' + estado.index}">Descripción</label>
+                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm"
+                                  th:id="${'descripcionCategoria' + estado.index}"
+                                  th:field="*{categorias[__${estado.index}__].descripcion}" maxlength="1000"></textarea>
                     </div>
 
-                    <button type="button" class="btnEliminarCategoria">Eliminar categoría</button>
-                </article>
-
-                <article class="categoriaCard">
-                    <input type="hidden" name="idCategoria[]" value="2">
-
-                    <div class="campoNuevoProductoForm">
-                        <label class="labelNuevoProductoForm" for="nombreCategoria2">Nombre</label>
-                        <input class="inputNuevoProductoForm" type="text" id="nombreCategoria2"
-                               name="nombre[]" value="RPG" required>
-                    </div>
-
-                    <div class="campoNuevoProductoForm">
-                        <label class="labelNuevoProductoForm" for="descripcionCategoria2">Descripción</label>
-                        <textarea class="inputNuevoProductoForm textareaNuevoProductoForm" id="descripcionCategoria2"
-                                  name="descripcion[]">Juegos de rol</textarea>
-                    </div>
-
-                    <button type="button" class="btnEliminarCategoria">Eliminar categoría</button>
+                    <!-- este botón pertenece al formulario de eliminar de abajo (atributo form), no a este.
+                         así, al dar Enter en un campo no se borra una categoría por accidente -->
+                    <button type="submit" class="btnEliminarCategoria"
+                            th:attr="form=${'eliminar-' + categoria.id}"
+                            onclick="return confirm('¿Eliminar esta categoría?');">Eliminar categoría</button>
                 </article>
             </section>
 
@@ -73,5 +68,12 @@
             </div>
 
         </form>
+
+        <!-- un formulario vacío por categoría solo para eliminarla -->
+        <form th:each="categoria : ${categoriasForm.categorias}"
+              th:id="${'eliminar-' + categoria.id}"
+              th:action="@{/admin/editarCategoria/{id}/eliminar(id=${categoria.id})}"
+              method="post"></form>
+
     </main>
 </th:block>
