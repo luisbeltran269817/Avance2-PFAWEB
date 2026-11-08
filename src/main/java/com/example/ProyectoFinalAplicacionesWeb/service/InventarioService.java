@@ -32,9 +32,6 @@ public class InventarioService {
     private static final int STOCK_CRITICO = 3;
     private static final int STOCK_BAJO = 10;
 
-    //id mock, en la bd inserté a un admin tambien, esto es temporal hasta que esté listo el login
-    private static final Long ID_ADMIN_TEMPORAL = 1L;
-
     public List<VarianteProducto> listarVariantes() {
         return varianteProductoRepository.findAll();
     }
@@ -103,9 +100,13 @@ public class InventarioService {
 
     //modifica la cantidad de stock y persiste el dato
     @Transactional
-    public boolean registrarAjuste(Long idVariante, int cantidad, String motivo) {
+    public boolean registrarAjuste(Long idVariante, int cantidad, String motivo, Long idAdmin) {
+        if (idAdmin == null) {
+            return false;
+        }
+
         VarianteProducto variante = varianteProductoRepository.findById(idVariante).orElse(null);
-        Administrador administrador = administradorRepository.findById(ID_ADMIN_TEMPORAL).orElse(null);
+        Administrador administrador = administradorRepository.findById(idAdmin).orElse(null);
 
         if (variante == null || administrador == null) {
             return false;

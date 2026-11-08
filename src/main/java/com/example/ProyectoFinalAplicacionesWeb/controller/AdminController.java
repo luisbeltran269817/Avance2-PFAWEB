@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -109,8 +110,10 @@ public class AdminController {
     @PostMapping("/admin/stock/{id}")
     public String guardarAjuste(@PathVariable Long id,
                                 @RequestParam("cantidad") int cantidad,
-                                @RequestParam("motivo") String motivo) {
-        boolean registrado = inventarioService.registrarAjuste(id, cantidad, motivo);
+                                @RequestParam("motivo") String motivo,
+                                HttpSession session) {
+        Long idAdmin = (Long) session.getAttribute("usuario_id");
+        boolean registrado = inventarioService.registrarAjuste(id, cantidad, motivo, idAdmin);
         if (!registrado) {
             return "redirect:/admin/stock/" + id;
         }
