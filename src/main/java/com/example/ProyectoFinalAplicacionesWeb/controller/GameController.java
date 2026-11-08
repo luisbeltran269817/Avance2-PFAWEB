@@ -11,20 +11,9 @@ public class GameController {
     public String prueba(){
         return "prueba";
     }
-
-    @GetMapping({"/","inicioSesion"})
-    public String inicioSesion(){
-        return "inicioSesion";
-    }
-
     //metodo hecho por kevin pero alguien lo quito, sospecho que con un merge
     @GetMapping({"/perfil"})
     public String perfil(){return "perfil";}
-
-    @GetMapping({"/registro"})
-    public String registro(){
-        return "registro";
-    }
 
     @GetMapping({"/carrito"})
     public String carrito(){
