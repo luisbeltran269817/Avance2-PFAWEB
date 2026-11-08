@@ -126,22 +126,35 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-     @GetMapping("/admin/editarCategoria")
-    public String editarCategorias() {
+    @GetMapping("/admin/editarCategoria")
+    public String editarCategorias(Model model) {
+        CategoriasFormDTO form = new CategoriasFormDTO();
+        form.setCategorias(categoriaService.listarCategorias());
+        model.addAttribute("categoriasForm", form);
         return "editarCategoria";
     }
 
     @PostMapping("/admin/editarCategoria")
-    public String guardarCategorias() {
-        //falta ponerle la logica de guardado
-        //solo redirige al admin dashboard por ahora
-        return "redirect:/admin";
+    public String guardarCategorias(@ModelAttribute("categoriasForm") CategoriasFormDTO form,
+                                    RedirectAttributes redirectAttributes) {
+        try {
+            categoriaService.guardarCambios(form);
+            redirectAttributes.addFlashAttribute("exito", "Categorías guardadas");
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/admin/editarCategoria";
     }
 
     @PostMapping("/admin/editarCategoria/{id}/eliminar")
-    public String eliminarCategoria(@PathVariable Long id) {
-        //falta ponerle la logica de eliminado
-        return "redirect:/admin/categorias";
+    public String eliminarCategoria(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            categoriaService.eliminarCategoria(id);
+            redirectAttributes.addFlashAttribute("exito", "Categoría eliminada");
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
+        return "redirect:/admin/editarCategoria";
     }
 
     @GetMapping("/admin/productos/{id}/editar")
@@ -161,3 +174,4 @@ public class AdminController {
         return "redirect:/admin";
     }
 }
+
