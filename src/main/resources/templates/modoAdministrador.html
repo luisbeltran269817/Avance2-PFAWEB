@@ -68,7 +68,10 @@
                             <span th:if="${pedido.estado == 'enviado'}" class="admin-badge admin-badge-normal">Enviado</span>
                             <span th:if="${pedido.estado == 'entregado'}" class="admin-badge admin-badge-normal">Entregado</span>
                             <span th:if="${pedido.estado == 'cancelado'}" class="admin-badge admin-badge-critico">Cancelado</span>
-                            <a href="#">Cambiar Estado</a>
+                            <form th:action="@{/admin/pedidos/{id}/estado(id=${pedido.id})}" method="post"
+                                  th:unless="${pedido.estado == 'entregado' or pedido.estado == 'cancelado'}">
+                                <button type="submit">Cambiar Estado</button>
+                            </form>
                         </div>
                     </div>
                     <div>

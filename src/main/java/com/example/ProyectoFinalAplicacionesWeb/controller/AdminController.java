@@ -116,6 +116,12 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @PostMapping("/admin/pedidos/{id}/estado")
+    public String cambiarEstado(@PathVariable Long id) {
+        ordenService.avanzarEstado(id);
+        return "redirect:/admin";
+    }
+
      @GetMapping("/admin/editarCategoria")
     public String editarCategorias() {
         return "editarCategoria";
