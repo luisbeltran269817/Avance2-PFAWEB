@@ -1,11 +1,16 @@
 package com.example.ProyectoFinalAplicacionesWeb.service;
 
 import com.example.ProyectoFinalAplicacionesWeb.dto.PedidoDTO;
+import com.example.ProyectoFinalAplicacionesWeb.dto.ResumenPedidosDTO;
 import com.example.ProyectoFinalAplicacionesWeb.model.DetalleOrden;
 import com.example.ProyectoFinalAplicacionesWeb.model.Orden;
 import com.example.ProyectoFinalAplicacionesWeb.repository.OrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +98,22 @@ public class OrdenService {
         orden.setEstadoOrden(siguiente);
         ordenRepository.save(orden);
         return true;
+    }
+
+    // pide al repository los conteos por estado y suma las ventas del mes (sin cancelados)
+    public ResumenPedidosDTO calcularResumen() {
+        LocalDateTime inicioMes = LocalDate.now().withDayOfMonth(1).atStartOfDay();
+
+        long total = ordenRepository.count();
+        long pendientes = ordenRepository.countByEstadoOrden(EstadoOrden.PENDIENTE);
+        long procesando = ordenRepository.countByEstadoOrden(EstadoOrden.PROCESANDO);
+
+        BigDecimal ventasMes = BigDecimal.ZERO;
+        for (Orden orden : ordenRepository.findByFechaGreaterThanEqualAndEstadoOrdenNot(inicioMes, EstadoOrden.CANCELADO)) {
+            ventasMes = ventasMes.add(orden.getTotal());
+        }
+
+        return new ResumenPedidosDTO(total, pendientes, procesando, ventasMes);
     }
 
 }
