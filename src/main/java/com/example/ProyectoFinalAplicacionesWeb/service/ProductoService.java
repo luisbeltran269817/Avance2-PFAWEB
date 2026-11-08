@@ -1,10 +1,7 @@
 package com.example.ProyectoFinalAplicacionesWeb.service;
 
 import com.example.ProyectoFinalAplicacionesWeb.dto.*;
-import com.example.ProyectoFinalAplicacionesWeb.model.Categoria;
-import com.example.ProyectoFinalAplicacionesWeb.model.ImagenProducto;
-import com.example.ProyectoFinalAplicacionesWeb.model.Producto;
-import com.example.ProyectoFinalAplicacionesWeb.model.VarianteProducto;
+import com.example.ProyectoFinalAplicacionesWeb.model.*;
 import com.example.ProyectoFinalAplicacionesWeb.repository.CategoriaRepository;
 import com.example.ProyectoFinalAplicacionesWeb.repository.ProductoRepository;
 
@@ -109,12 +106,17 @@ public class ProductoService {
                 .map(this::convertirImagenADTO)
                 .toList();
 
+        List<VarianteProductoDTO> variantes = producto.getVariantes().stream()
+                .map(this::convertirVarianteADTO)
+                .toList();
+
         ProductoDTO dto = new ProductoDTO();
         dto.setId(producto.getId());
         dto.setNombre(producto.getNombre());
         dto.setDescripcion(producto.getDescripcion());
         dto.setCategoria(convertirCategoriaADTO(producto.getCategoria()));
         dto.setImagenes(imagenes);
+        dto.setVariantes(variantes);
         return dto;
     }
 
@@ -138,6 +140,30 @@ public class ProductoService {
                 categoria.getNombre(),
                 categoria.getDescripcion()
         );
+    }
+
+    //y otro auxiliar para las variantes...
+    private VarianteProductoDTO convertirVarianteADTO(VarianteProducto variante) {
+        List<IdiomaDTO> idiomas = variante.getIdiomas().stream()
+                .map(this::convertirIdiomaADTO)
+                .toList();
+
+        VarianteProductoDTO dto = new VarianteProductoDTO();
+        dto.setId(variante.getId());
+        dto.setActivo(variante.isActivo());
+        dto.setDimensiones(variante.getDimensiones());
+        dto.setPlataforma(variante.getPlataforma());
+        dto.setPrecio(variante.getPrecio());
+        dto.setRegion(variante.getRegion());
+        dto.setSoporteFisico(variante.getSoporteFisico());
+        dto.setStock(variante.getStock());
+        dto.setIdiomas(idiomas);
+        return dto;
+    }
+
+    //y otro auxiliar para los idiomas de las variantes........ ;-;
+    private IdiomaDTO convertirIdiomaADTO(Idioma idioma) {
+        return new IdiomaDTO(idioma.getId(), idioma.getNombre());
     }
 
     @Transactional

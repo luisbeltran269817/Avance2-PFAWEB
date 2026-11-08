@@ -1706,11 +1706,14 @@ body.admin {
     gap: 0.5rem;
 }
 
-.admin-pedido-estado a {
+.admin-pedido-estado button {
+    padding: 0;
+    border: none;
+    background: none;
     color: var(--accent-dark);
     font-size: 0.75rem;
     font-weight: 600;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 .admin-pedido-contacto {

@@ -15,7 +15,6 @@ public class ProductoDTO {
     private String nombre;
     private String descripcion;
     private CategoriaDTO categoria;
-    //para esta primera pantalla aun no ocupo estos atributos (hacerlos dto, no como entidad)
-    //private List<VarianteProducto> variantes;
+    private List<VarianteProductoDTO> variantes;
     private List<ImagenProductoDTO> imagenes;
 }

@@ -5,11 +5,15 @@
         <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Añadir variante</h1>
 
 
-        <form class="nuevoProductoForm" th:action="@{/admin/variantes/guardarVariante}" method="post">
+        <form class="nuevoProductoForm" th:action="@{/admin/variantes/guardarVariante}" th:object="${varianteForm}" method="post">
+
+            <input type="hidden" th:field="*{productoId}">
+
             <div class="campoNuevoProductoForm">
                 <label class="labelNuevoProductoForm" for="plataforma">Plataforma</label>
-                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="plataforma" name="plataforma" required>
-                    <option value="" selected>--Elegir plataforma--</option>
+                <select class="inputNuevoProductoForm selectNuevoProductoForm" id="plataforma"
+                        th:field="*{plataforma}" required>
+                    <option value="">--Elegir plataforma--</option>
                     <option value="xbox">Xbox</option>
                     <option value="playstation">PlayStation</option>
                     <option value="switch">Nintendo Switch</option>
@@ -17,45 +21,54 @@
                 </select>
             </div>
 
-            <div class = "campoNuevoProductoForm">
-            <label class="labelNuevoProductoForm" for="precio">Precio:</label>
-            <input
-                    class="inputNuevoProductoForm"
-                    type="number"
-                    id="precio"
-                    name="precio"
-                    placeholder="Precio en dolares, sin $"
-                    min="1"
-                    required
-            >
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="precio">Precio:</label>
+                <input class="inputNuevoProductoForm" type="number" id="precio" th:field="*{precio}"
+                       placeholder="Precio en dolares, sin $" min="0.01" step="0.01" required>
             </div>
 
-            <div class = "campoNuevoProductoForm">
-            <label class="labelNuevoProductoForm" for="stock">Stock inicial:</label>
-            <input
-                    class="inputNuevoProductoForm"
-                    type="number"
-                    id="stock"
-                    name="stock"
-                    placeholder="Introduzca un numero"
-                    min="1"
-                    required
-            >
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="stock">Stock inicial:</label>
+                <input class="inputNuevoProductoForm" type="number" id="stock" th:field="*{stock}"
+                       placeholder="Introduzca un numero" min="0" required>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="dimensiones">Dimensiones:</label>
+                <input style="font-size: 1rem; background-color: var(--tertiary-dark)" class="inputNuevoProductoForm" type="text" id="dimensiones" th:field="*{dimensiones}"
+                       placeholder="ej: 123x456 cm" required>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="region">Region:</label>
+                <input style="font-size: 1rem; background-color: var(--tertiary-dark)" class="inputNuevoProductoForm" type="text" id="region" th:field="*{region}"
+                       placeholder="ej: LATAM" required>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm" for="soporteFisico">Soporte fisico:</label>
+                <input style="font-size: 1rem; background-color: var(--tertiary-dark)" class="inputNuevoProductoForm" type="text" id="soporteFisico" th:field="*{soporteFisico}"
+                       placeholder="ej: Cartucho, DVD" required>
+            </div>
+
+            <div class="campoNuevoProductoForm">
+                <label class="labelNuevoProductoForm">Idiomas</label>
+                <div th:each="idioma : ${idiomas}"
+                     style="display: flex; justify-content: space-between; align-items: center;">
+                    <label th:for="${#ids.next('idiomaIds')}" th:text="${idioma.nombre}">Idioma</label>
+                    <input type="checkbox" th:field="*{idiomaIds}" th:value="${idioma.id}">
+                </div>
             </div>
 
             <div class="campoNuevoProductoForm">
                 <label class="labelNuevoProductoForm" for="activo">Activo</label>
-                <input style="height: 3rem" type="checkbox" id="activo" class="toggle" checked>
-
+                <input style="height: 3rem" type="checkbox" id="activo" class="toggle" th:field="*{activo}">
             </div>
 
-<!--            le puse margen solo aqui para que se vaya hasta abajo de la pantalla-->
-<!--            porque en esta pantalla no hay sufieciente contenido para empujarlo-->
-            <div class="botonesAdminConfirmarCancelar" style="margin-top: 9.5rem">
+            <div class="botonesAdminConfirmarCancelar">
                 <button type="submit" class="btn-primary">Confirmar</button>
-                <button type="button" class="btn-secundario">Cancelar / Volver</button>
+                <a th:href="@{/admin/variantes/seleccionar}" class="btn-secundario">Cancelar / Volver</a>
             </div>
-
         </form>
     </main>
 </th:block>
