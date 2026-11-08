@@ -12,7 +12,6 @@ import com.example.ProyectoFinalAplicacionesWeb.model.Administrador;
 import com.example.ProyectoFinalAplicacionesWeb.model.AjusteInventario;
 import com.example.ProyectoFinalAplicacionesWeb.repository.AdministradorRepository;
 import com.example.ProyectoFinalAplicacionesWeb.repository.AjusteInventarioRepository;
-import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 @Service
@@ -99,7 +98,6 @@ public class InventarioService {
     }
 
     //modifica la cantidad de stock y persiste el dato
-    @Transactional
     public boolean registrarAjuste(Long idVariante, int cantidad, String motivo, Long idAdmin) {
         if (idAdmin == null) {
             return false;

@@ -7,11 +7,11 @@
         <div class="admin-bienvenida">
             <div>
                 <h1>Modo Administrador Activo</h1>
-                <p>Gestion central de stock y catalogo de ediciones fisicas</p>
+                <p>Gestión central de stock y catálogo de ediciones físicas</p>
             </div>
             <div class="admin-bienvenida-acciones">
-                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Titulo</a>
-                <a th:href="@{/admin/editarCategoria}" class="btn-secundario">Editar categorias</a>
+                <a th:href="@{/admin/nuevo-titulo}" class="btn-acento">+ Nuevo Título</a>
+                <a th:href="@{/admin/editarCategoria}" class="btn-secundario">Editar categorías</a>
             </div>
         </div>
 
@@ -47,10 +47,6 @@
                 <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
                 <input type="search" name="buscar" placeholder="Buscar por cliente, correo o # Orden...">
             </form>
-            <div class="admin-fecha">
-                <span>Hoy 24 Oct 2026</span>
-                <a href="#">Cambiar</a>
-            </div>
 
             <div class="admin-filtros">
                 <button type="button" class="admin-chip activo" th:text="|Todos (${resumenPedidos.total})|">Todos (0)</button>
@@ -99,7 +95,7 @@
 
             <form class="admin-buscador">
                 <img th:src="@{/imgs/lupaBuscar.png}" alt="Buscar">
-                <input type="search" name="buscarProducto" placeholder="Buscar por título, SKU o código de barra...">
+                <input type="search" name="buscarProducto" placeholder="Buscar por título o plataforma">
             </form>
 
             <div class="admin-filtros">
@@ -124,7 +120,7 @@
                     </div>
                     <div class="admin-producto-acciones">
                         <div class="admin-producto-activo">
-                            <input type="checkbox" th:id="|activo-${item.id}|" th:checked="${item.activo}">
+                            <input type="checkbox" th:id="|activo-${item.id}|" th:checked="${item.activo}" disabled>
                             <label th:for="|activo-${item.id}|">Catálogo Activo</label>
                         </div>
                         <div class="admin-producto-botones">

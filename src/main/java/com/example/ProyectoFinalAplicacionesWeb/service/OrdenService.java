@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.ProyectoFinalAplicacionesWeb.model.EstadoOrden;
-import org.springframework.transaction.annotation.Transactional;
 import static com.example.ProyectoFinalAplicacionesWeb.model.EstadoOrden.ENVIADO;
 import static com.example.ProyectoFinalAplicacionesWeb.model.EstadoOrden.PROCESANDO;
 
@@ -73,7 +72,6 @@ public class OrdenService {
     }
 
     // avanza el pedido al siguiente estado
-    @Transactional
     public boolean avanzarEstado(Long id) {
         Orden orden = ordenRepository.findById(id).orElse(null);
         if (orden == null) {

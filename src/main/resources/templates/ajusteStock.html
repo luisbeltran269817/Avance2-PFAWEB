@@ -8,6 +8,9 @@
                     <h1>Ajustar Stock</h1>
                     <p class="admin-seccion-descripcion" th:text="${variante.nombre}">Nombre del producto</p>
                     <p class="admin-producto-sku admin-sku-acento" th:text="|${variante.plataforma} - ID: ${variante.id}|">Plataforma - ID: 0</p>
+                    <p th:if="${param.error}" class="admin-mensaje-error">
+                        No se pudo aplicar el ajuste. Revisa que la cantidad no sea 0,
+                        que el stock no quede negativo y que elegiste un motivo.</p>
                 </div>
 
                 <!--stock actual y nuevo-->

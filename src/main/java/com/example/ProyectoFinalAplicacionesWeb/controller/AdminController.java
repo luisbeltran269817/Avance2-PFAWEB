@@ -115,7 +115,7 @@ public class AdminController {
         Long idAdmin = (Long) session.getAttribute("usuario_id");
         boolean registrado = inventarioService.registrarAjuste(id, cantidad, motivo, idAdmin);
         if (!registrado) {
-            return "redirect:/admin/stock/" + id;
+            return "redirect:/admin/stock/" + id + "?error";
         }
         return "redirect:/admin";
     }

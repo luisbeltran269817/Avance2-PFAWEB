@@ -21,7 +21,10 @@
     </span>
     </a>
 
-    <img th:src="@{/imgs/pfp.png}" alt="Foto de perfil del administrador">
+    <div class="admin-header-acciones">
+        <a th:href="@{/cerrarSesion}">Cerrar sesión</a>
+        <img th:src="@{/imgs/pfp.png}" alt="Foto de perfil del administrador">
+    </div>
 </header>
 
 <main th:replace="${content}"></main>

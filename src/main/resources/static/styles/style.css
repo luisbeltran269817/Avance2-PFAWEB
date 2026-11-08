@@ -1954,6 +1954,25 @@ body.admin {
     text-align: left;
 }
 
+.admin-mensaje-error {
+    color: var(--estado-error);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.admin-header-acciones {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-header-acciones a {
+    color: var(--accent-dark);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 /* admin movil */
 @media (min-width: 390px) {
     .admin-bienvenida {
