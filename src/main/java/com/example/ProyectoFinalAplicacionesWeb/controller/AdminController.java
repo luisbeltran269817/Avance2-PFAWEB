@@ -37,6 +37,7 @@ public class AdminController {
         model.addAttribute("inventario", inventario);
         model.addAttribute("resumen", inventarioService.calcularResumen(inventario));
         model.addAttribute("pedidos", ordenService.listarPedidos());
+        model.addAttribute("resumenPedidos", ordenService.calcularResumen());
         return "modoAdministrador";
     }
 

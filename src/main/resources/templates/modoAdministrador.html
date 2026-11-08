@@ -19,11 +19,11 @@
         <div class="admin-resumen">
             <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Ventas Mes</p>
-                <p class="admin-resumen-valor">$24,850</p>
+                <p class="admin-resumen-valor" th:text="'$' + ${resumenPedidos.ventasMes}">$0.00</p>
             </div>
             <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Órdenes Físicas</p>
-                <p class="admin-resumen-valor">42</p>
+                <p class="admin-resumen-valor" th:text="${resumenPedidos.total}">0</p>
             </div>
             <div class="admin-resumen-card">
                 <p class="admin-resumen-titulo">Títulos Físicos</p>
@@ -53,9 +53,9 @@
             </div>
 
             <div class="admin-filtros">
-                <button type="button" class="admin-chip activo">Todos <span class="admin-contador">42</span></button>
-                <button type="button" class="admin-chip"><span class="admin-punto-pendiente">*</span> Pendiente (8)</button>
-                <button type="button" class="admin-chip"><span class="admin-punto-procesando">*</span> Procesando (12)</button>
+                <button type="button" class="admin-chip activo" th:text="|Todos (${resumenPedidos.total})|">Todos (0)</button>
+                <button type="button" class="admin-chip"><span class="admin-punto-pendiente">*</span> <span th:text="|Pendiente (${resumenPedidos.pendientes})|">Pendiente (0)</span></button>
+                <button type="button" class="admin-chip"><span class="admin-punto-procesando">*</span> <span th:text="|Procesando (${resumenPedidos.procesando})|">Procesando (0)</span></button>
             </div>
 
             <div class="admin-lista">
