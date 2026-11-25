@@ -2822,3 +2822,13 @@ body.admin {
     border: none;
 }
 
+/*estilos para el mensaje de error*/
+.mensaje-error {
+    background-color: var(--estado-error);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 20px;
+    text-align: center;
+}
+

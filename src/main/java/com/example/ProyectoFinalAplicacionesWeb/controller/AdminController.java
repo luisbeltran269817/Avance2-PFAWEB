@@ -79,17 +79,27 @@ public class AdminController {
 
     @GetMapping("/admin/variantes/nuevo")
     public String crearVarianteProducto(@RequestParam Long productoId, Model model) {
-        VarianteFormDTO form = new VarianteFormDTO();
-        form.setProductoId(productoId);
-        model.addAttribute("varianteForm", form);
+        if (!model.containsAttribute("varianteForm")) {
+            VarianteFormDTO form = new VarianteFormDTO();
+            form.setProductoId(productoId);
+            model.addAttribute("varianteForm", form);
+        }
         model.addAttribute("idiomas", idiomaService.listarIdiomas());
         return "añadirVarianteProducto";
     }
 
     @PostMapping("/admin/variantes/guardarVariante")
-    public String guardarVariante(@ModelAttribute("varianteForm") VarianteFormDTO form, Model model) {
+    public String guardarVariante(@ModelAttribute("varianteForm") VarianteFormDTO form, RedirectAttributes redirectAttributes) {
+        try {
             varianteProductoService.guardarVariante(form);
             return "redirect:/admin";
+
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("mensajeError", e.getMessage());
+            redirectAttributes.addFlashAttribute("varianteForm", form);
+
+            return "redirect:/admin/variantes/nuevo?productoId=" + form.getProductoId();
+        }
     }
 
     @GetMapping("/admin/productos/editar")

@@ -4,6 +4,9 @@
     <main class="admin-container">
         <h1 style = "margin-left: 20px; font-family: 'Space Grotesk'" >Añadir variante</h1>
 
+        <div th:if="${mensajeError}" class="mensaje-error">
+            <p th:text="${mensajeError}"></p>
+        </div>
 
         <form class="nuevoProductoForm" th:action="@{/admin/variantes/guardarVariante}" th:object="${varianteForm}" method="post">
 
